@@ -1,9 +1,9 @@
 package org.csgames.spaceship.sdk;
 
-enum ClientType {
+enum HeadquartersClientType {
   FAKE;
 
-  public static ClientType fromString(String clientType) {
+  public static HeadquartersClientType fromString(String clientType) {
     if (clientType == null || clientType.equals("")) {
       return FAKE;
     }
