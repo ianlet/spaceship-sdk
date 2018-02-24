@@ -45,6 +45,13 @@ public class SpaceshipServiceTest {
     verifyCommandSent(CommandType.OPEN_DOOR, THE_ROOM, THE_DOOR_NUMBER);
   }
 
+  @Test
+  public void itShouldCloseTheDoorOfTheTarget() {
+    spaceshipService.closeDoor(THE_ROOM, THE_DOOR_NUMBER);
+
+    verifyCommandSent(CommandType.CLOSE_DOOR, THE_ROOM, THE_DOOR_NUMBER);
+  }
+
   private void verifyCommandSent(CommandType commandType, String theTarget, int someFish) {
     Command expectedCommand = new Command(commandType, theTarget, String.format("%d", someFish));
     verify(headquartersClient).sendCommand(expectedCommand);
