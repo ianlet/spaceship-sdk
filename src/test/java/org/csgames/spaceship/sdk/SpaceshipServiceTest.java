@@ -16,43 +16,43 @@ public class SpaceshipServiceTest {
   private static final int SOME_FISH = 19;
   private static final int SOME_WATER_IN_LITER = 27;
 
-  private HeadquartersClient headquartersClient;
+  private Headquarters headquarters;
   private SpaceshipService spaceshipService;
   private SpaceshipBlueprint theSpaceshipBlueprint;
 
   @Before
   public void setUp() throws Exception {
     theSpaceshipBlueprint = mock(SpaceshipBlueprint.class);
-    headquartersClient = mock(HeadquartersClient.class);
-    spaceshipService = new SpaceshipService(headquartersClient, theSpaceshipBlueprint);
+    headquarters = mock(Headquarters.class);
+    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint);
   }
 
   @Test
-  public void itShouldCommandToSendFishToTarget() {
+  public void itShouldRecordThatFishWereSentToTarget() {
     spaceshipService.sendFishTo(THE_TARGET, SOME_FISH);
 
-    verifyCommandSent(CommandType.SEND_FISH, THE_TARGET, SOME_FISH);
+    verifyEventRecorded(EventType.FISH_SENT, THE_TARGET, SOME_FISH);
   }
 
   @Test
-  public void itShouldCommandToSendWaterToTarget() {
+  public void itShouldRecordThatWaterWasSentToTarget() {
     spaceshipService.sendWaterTo(THE_TARGET, SOME_WATER_IN_LITER);
 
-    verifyCommandSent(CommandType.SEND_WATER, THE_TARGET, SOME_WATER_IN_LITER);
+    verifyEventRecorded(EventType.WATER_SENT, THE_TARGET, SOME_WATER_IN_LITER);
   }
 
   @Test
-  public void itShouldOpenTheDoorOfTheTarget() {
+  public void itShouldRecordThatTheDoorOfTheRoomWasOpen() {
     spaceshipService.openDoor(THE_ROOM, THE_DOOR_NUMBER);
 
-    verifyCommandSent(CommandType.OPEN_DOOR, THE_ROOM, THE_DOOR_NUMBER);
+    verifyEventRecorded(EventType.DOOR_OPEN, THE_ROOM, THE_DOOR_NUMBER);
   }
 
   @Test
-  public void itShouldCloseTheDoorOfTheTarget() {
+  public void itShouldRecordThatTheDoorOfTheRoomWasClosed() {
     spaceshipService.closeDoor(THE_ROOM, THE_DOOR_NUMBER);
 
-    verifyCommandSent(CommandType.CLOSE_DOOR, THE_ROOM, THE_DOOR_NUMBER);
+    verifyEventRecorded(EventType.DOOR_CLOSED, THE_ROOM, THE_DOOR_NUMBER);
   }
 
   @Test
@@ -62,8 +62,8 @@ public class SpaceshipServiceTest {
     assertThat(spaceshipBlueprint).isEqualTo(theSpaceshipBlueprint);
   }
 
-  private void verifyCommandSent(CommandType commandType, String theTarget, int someFish) {
-    Command expectedCommand = new Command(commandType, theTarget, String.format("%d", someFish));
-    verify(headquartersClient).sendCommand(expectedCommand);
+  private void verifyEventRecorded(EventType eventType, String theTarget, int payload) {
+    Event expectedEvent = new Event(eventType, theTarget, String.format("%d", payload));
+    verify(headquarters).recordEvent(expectedEvent);
   }
 }

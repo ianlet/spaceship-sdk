@@ -1,41 +1,42 @@
 package org.csgames.spaceship.sdk;
 
-import static org.csgames.spaceship.sdk.CommandType.CLOSE_DOOR;
-import static org.csgames.spaceship.sdk.CommandType.OPEN_DOOR;
-import static org.csgames.spaceship.sdk.CommandType.SEND_FISH;
-import static org.csgames.spaceship.sdk.CommandType.SEND_WATER;
+import static org.csgames.spaceship.sdk.EventType.DOOR_CLOSED;
+import static org.csgames.spaceship.sdk.EventType.DOOR_OPEN;
+import static org.csgames.spaceship.sdk.EventType.FISH_SENT;
+import static org.csgames.spaceship.sdk.EventType.WATER_SENT;
 
 public class SpaceshipService {
 
-  private final HeadquartersClient headquartersClient;
+  private final Headquarters headquarters;
   private final SpaceshipBlueprint spaceshipBlueprint;
 
-  SpaceshipService(HeadquartersClient headquartersClient, SpaceshipBlueprint spaceshipBlueprint) {
-    this.headquartersClient = headquartersClient;
+  SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint) {
+    this.headquarters = headquarters;
     this.spaceshipBlueprint = spaceshipBlueprint;
   }
 
   public void sendFishTo(String target, int fishCount) {
-    Command command = new Command(SEND_FISH, target, String.format("%d", fishCount));
-    headquartersClient.sendCommand(command);
+    recordEvent(FISH_SENT, target, fishCount);
   }
 
   public void sendWaterTo(String target, int waterInLiter) {
-    Command command = new Command(SEND_WATER, target, String.format("%d", waterInLiter));
-    headquartersClient.sendCommand(command);
+    recordEvent(WATER_SENT, target, waterInLiter);
   }
 
   public void openDoor(String target, int doorNumber) {
-    Command command = new Command(OPEN_DOOR, target, String.format("%d", doorNumber));
-    headquartersClient.sendCommand(command);
+    recordEvent(DOOR_OPEN, target, doorNumber);
   }
 
   public void closeDoor(String target, int doorNumber) {
-    Command command = new Command(CLOSE_DOOR, target, String.format("%d", doorNumber));
-    headquartersClient.sendCommand(command);
+    recordEvent(DOOR_CLOSED, target, doorNumber);
   }
 
   public SpaceshipBlueprint readBlueprint() {
     return spaceshipBlueprint;
+  }
+
+  private void recordEvent(EventType eventType, String target, Object payload) {
+    Event event = new Event(eventType, target, String.format("%s", payload));
+    headquarters.recordEvent(event);
   }
 }

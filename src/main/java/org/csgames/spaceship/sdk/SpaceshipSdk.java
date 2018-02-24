@@ -14,10 +14,10 @@ public class SpaceshipSdk {
 
   public static SpaceshipSdk register(String token) {
     HeadquartersClientFactory clientFactory = new HeadquartersClientFactory();
-    HeadquartersClient headquartersClient = clientFactory.create(token);
-    SpaceshipService spaceshipService = new SpaceshipService(headquartersClient, SpaceshipBlueprintFactory.generate());
+    Headquarters headquarters = clientFactory.create(token);
+    SpaceshipService spaceshipService = new SpaceshipService(headquarters, SpaceshipBlueprintFactory.generate());
     LocationService locationService = new LocationService();
-    CommunicationService communicationService = new CommunicationService(headquartersClient);
+    CommunicationService communicationService = new CommunicationService(headquarters);
     return new SpaceshipSdk(spaceshipService, locationService, communicationService);
   }
 

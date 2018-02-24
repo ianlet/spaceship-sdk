@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class HeadquartersClientFactoryTest {
+public class HeadquartersFactoryTest {
 
   private static final String A_TOKEN = "";
-  private static final String CLIENT_TYPE_FAKE = HeadquartersClientType.FAKE.name();
+  private static final String CLIENT_TYPE_FAKE = HeadquartersType.FAKE.name();
   private HeadquartersClientFactory headquartersClientFactory;
 
   @Before
@@ -18,17 +18,17 @@ public class HeadquartersClientFactoryTest {
 
   @Test
   public void givenNoClientType_thenCreateFakeHeadquartersClient() {
-    HeadquartersClient spaceshipClient = headquartersClientFactory.create(A_TOKEN);
+    Headquarters spaceshipClient = headquartersClientFactory.create(A_TOKEN);
 
-    assertThat(spaceshipClient).isInstanceOf(HeadquartersClientFake.class);
+    assertThat(spaceshipClient).isInstanceOf(HeadquartersFake.class);
   }
 
   @Test
   public void givenClientTypeFake_thenCreateFakeHeadquartersClient() {
     System.setProperty("clientType", CLIENT_TYPE_FAKE);
 
-    HeadquartersClient headquartersClient = headquartersClientFactory.create(A_TOKEN);
+    Headquarters headquarters = headquartersClientFactory.create(A_TOKEN);
 
-    assertThat(headquartersClient).isInstanceOf(HeadquartersClientFake.class);
+    assertThat(headquarters).isInstanceOf(HeadquartersFake.class);
   }
 }

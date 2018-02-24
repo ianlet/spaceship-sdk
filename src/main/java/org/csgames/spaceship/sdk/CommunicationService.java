@@ -2,10 +2,10 @@ package org.csgames.spaceship.sdk;
 
 public class CommunicationService {
 
-  private final HeadquartersClient headquartersClient;
+  private final Headquarters headquarters;
 
-  public CommunicationService(HeadquartersClient headquartersClient) {
-    this.headquartersClient = headquartersClient;
+  public CommunicationService(Headquarters headquarters) {
+    this.headquarters = headquarters;
   }
 
   public void moveTo(String target, String direction, double distance) {
