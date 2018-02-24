@@ -8,7 +8,10 @@ public class CommunicationService {
     this.headquarters = headquarters;
   }
 
-  public void moveTo(String target, Direction direction, double distance) {
+  public void moveTo(String target, Direction direction, int distance) {
+    String movement = String.format("%s,%d", direction, distance);
+    Event event = new Event(EventType.MOVED_TO, target, movement);
+    headquarters.recordEvent(event);
   }
 
   public void fetchFishFrom(String consumer, String supplier) {
