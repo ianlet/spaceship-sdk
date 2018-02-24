@@ -9,22 +9,22 @@ class CoordinatesTable {
 
   private List<Coordinates> from = new ArrayList<>();
   private List<Coordinates> to = new ArrayList<>();
-  private List<String> expectedDirections = new ArrayList<>();
+  private List<Direction> expectedDirections = new ArrayList<>();
 
-  public void push(Coordinates from, Coordinates to, String expectedDirection) {
+  public void push(Coordinates from, Coordinates to, Direction expectedDirection) {
     this.from.add(from);
     this.to.add(to);
     this.expectedDirections.add(expectedDirection);
   }
 
-  public void forEach(CalculateDirection<Coordinates, Coordinates, String> fun) {
+  public void forEach(CalculateDirection<Coordinates, Coordinates, Direction> fun) {
     for (int i = 0; i < expectedDirections.size(); i++) {
       Coordinates from = this.from.get(i);
       Coordinates to = this.to.get(i);
 
-      String direction = fun.apply(from, to);
+      Direction direction = fun.apply(from, to);
 
-      String expectedDirection = expectedDirections.get(i);
+      Direction expectedDirection = expectedDirections.get(i);
       assertWithMessage(String.format("Compass point from %s to %s", from, to)).that(direction).isEqualTo(expectedDirection);
     }
   }

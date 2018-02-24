@@ -6,6 +6,14 @@ import static java.lang.Math.cos;
 import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
+import static org.csgames.spaceship.sdk.Direction.EAST;
+import static org.csgames.spaceship.sdk.Direction.NORTH;
+import static org.csgames.spaceship.sdk.Direction.NORTH_EAST;
+import static org.csgames.spaceship.sdk.Direction.NORTH_WEST;
+import static org.csgames.spaceship.sdk.Direction.SOUTH;
+import static org.csgames.spaceship.sdk.Direction.SOUTH_EAST;
+import static org.csgames.spaceship.sdk.Direction.SOUTH_WEST;
+import static org.csgames.spaceship.sdk.Direction.WEST;
 
 public class LocationService {
 
@@ -28,34 +36,34 @@ public class LocationService {
     return EARTH_RADIUS * c;
   }
 
-  public String directionTo(double lat1, double long1, double lat2, double long2) {
+  public Direction directionTo(double lat1, double long1, double lat2, double long2) {
     double bearing = calculateBearing(lat1, long1, lat2, long2);
 
     if (bearing >= -22.50 && bearing <= 22.50) {
-      return "N";
+      return NORTH;
     }
     if (bearing >= 22.50 && bearing <= 67.50) {
-      return "NE";
+      return NORTH_EAST;
     }
     if (bearing >= 67.50 && bearing <= 112.50) {
-      return "E";
+      return EAST;
     }
     if (bearing >= 112.50 && bearing <= 157.50) {
-      return "SE";
+      return SOUTH_EAST;
     }
     if (bearing >= 157.50 || bearing <= -157.5) {
-      return "S";
+      return SOUTH;
     }
     if (bearing >= -157.50 && bearing <= -112.50) {
-      return "SW";
+      return SOUTH_WEST;
     }
     if (bearing >= -112.50 && bearing <= -67.50) {
-      return "W";
+      return WEST;
     }
     if (bearing >= -67.50 && bearing <= -22.50) {
-      return "NW";
+      return NORTH_WEST;
     }
-    return "";
+    return Direction.NONE;
   }
 
   private double calculateBearing(double lat1, double long1, double lat2, double long2) {

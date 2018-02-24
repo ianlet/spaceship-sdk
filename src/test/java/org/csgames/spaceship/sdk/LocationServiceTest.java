@@ -44,14 +44,14 @@ public class LocationServiceTest {
   @Test
   public void calculateDirectionFromOneCoordinatesToAnother() {
     CoordinatesTable table = new CoordinatesTable();
-    table.push(new Coordinates(0, 0), new Coordinates(5, 0), "N");
-    table.push(new Coordinates(0, 0), new Coordinates(-5, 0), "S");
-    table.push(new Coordinates(0, 0), new Coordinates(0, 5), "E");
-    table.push(new Coordinates(0, 0), new Coordinates(0, -5), "W");
-    table.push(new Coordinates(0, 0), new Coordinates(5, 5), "NE");
-    table.push(new Coordinates(0, 0), new Coordinates(-5, 5), "SE");
-    table.push(new Coordinates(0, 0), new Coordinates(-5, -5), "SW");
-    table.push(new Coordinates(0, 0), new Coordinates(5, -5), "NW");
+    table.push(new Coordinates(0, 0), new Coordinates(5, 0), Direction.NORTH);
+    table.push(new Coordinates(0, 0), new Coordinates(-5, 0), Direction.SOUTH);
+    table.push(new Coordinates(0, 0), new Coordinates(0, 5), Direction.EAST);
+    table.push(new Coordinates(0, 0), new Coordinates(0, -5), Direction.WEST);
+    table.push(new Coordinates(0, 0), new Coordinates(5, 5), Direction.NORTH_EAST);
+    table.push(new Coordinates(0, 0), new Coordinates(-5, 5), Direction.SOUTH_EAST);
+    table.push(new Coordinates(0, 0), new Coordinates(-5, -5), Direction.SOUTH_WEST);
+    table.push(new Coordinates(0, 0), new Coordinates(5, -5), Direction.NORTH_WEST);
 
     table.forEach((from, to) -> locationService.directionTo(from.latitude, from.longitude, to.latitude, to.longitude));
   }
