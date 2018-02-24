@@ -9,6 +9,8 @@ import static org.mockito.Mockito.verify;
 public class SpaceshipServiceTest {
 
   private static final String THE_TARGET = "team-01";
+  private static final String THE_ROOM = "room-21";
+  private static final int THE_DOOR_NUMBER = 3;
 
   private static final int SOME_FISH = 19;
   private static final int SOME_WATER_IN_LITER = 27;
@@ -34,6 +36,13 @@ public class SpaceshipServiceTest {
     spaceshipService.sendWaterTo(THE_TARGET, SOME_WATER_IN_LITER);
 
     verifyCommandSent(CommandType.SEND_WATER, THE_TARGET, SOME_WATER_IN_LITER);
+  }
+
+  @Test
+  public void itShouldOpenTheDoorOfTheTarget() {
+    spaceshipService.openDoor(THE_ROOM, THE_DOOR_NUMBER);
+
+    verifyCommandSent(CommandType.OPEN_DOOR, THE_ROOM, THE_DOOR_NUMBER);
   }
 
   private void verifyCommandSent(CommandType commandType, String theTarget, int someFish) {

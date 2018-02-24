@@ -1,5 +1,9 @@
 package org.csgames.spaceship.sdk;
 
+import static org.csgames.spaceship.sdk.CommandType.OPEN_DOOR;
+import static org.csgames.spaceship.sdk.CommandType.SEND_FISH;
+import static org.csgames.spaceship.sdk.CommandType.SEND_WATER;
+
 public class SpaceshipService {
 
   private final HeadquartersClient headquartersClient;
@@ -9,19 +13,21 @@ public class SpaceshipService {
   }
 
   public void sendFishTo(String target, int fishCount) {
-    Command command = new Command(CommandType.SEND_FISH, target, String.format("%d", fishCount));
+    Command command = new Command(SEND_FISH, target, String.format("%d", fishCount));
     headquartersClient.sendCommand(command);
   }
 
   public void sendWaterTo(String target, int waterInLiter) {
-    Command command = new Command(CommandType.SEND_WATER, target, String.format("%d", waterInLiter));
+    Command command = new Command(SEND_WATER, target, String.format("%d", waterInLiter));
     headquartersClient.sendCommand(command);
   }
 
-  public void openDoor(Integer doorNumber) {
+  public void openDoor(String target, int doorNumber) {
+    Command command = new Command(OPEN_DOOR, target, String.format("%d", doorNumber));
+    headquartersClient.sendCommand(command);
   }
 
-  public void closeDoor(Integer doorNumber) {
+  public void closeDoor(int doorNumber) {
   }
 
   public SpaceshipBlueprint readBlueprint() {
