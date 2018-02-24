@@ -15,7 +15,9 @@ public class CommunicationServiceTest {
   private static final Direction THE_DIRECTION = Direction.NORTH;
   private static final int THE_FISH_COUNT = 47;
   private static final int THE_WATER_AMOUNT = 15;
+
   private static final Coordinates THE_FISH_SHOAL_LOCATION = new Coordinates(13.45D, 59.3747D);
+  private static final Coordinates THE_SOURCE_OF_WATER_LOCATION = new Coordinates(43.1123D, -38.321D);
 
   private Headquarters headquarters;
   private CommunicationService communicationService;
@@ -55,6 +57,13 @@ public class CommunicationServiceTest {
     communicationService.catchFish(THE_TARGET, THE_FISH_SHOAL_LOCATION);
 
     verifyEventRecorded(EventType.FISH_CAUGHT, THE_TARGET, THE_FISH_SHOAL_LOCATION.toString());
+  }
+
+  @Test
+  public void itShouldRecordThatTheTargetRefilledWaterAtTheSourceOfWaterLocation() {
+    communicationService.refillWater(THE_TARGET, THE_SOURCE_OF_WATER_LOCATION);
+
+    verifyEventRecorded(EventType.WATER_REFILLED, THE_TARGET, THE_SOURCE_OF_WATER_LOCATION.toString());
   }
 
   private void verifyEventRecorded(EventType eventType, String target, String payload) {
