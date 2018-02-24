@@ -1,6 +1,5 @@
 package org.csgames.spaceship.sdk;
 
-import org.csgames.spaceship.sdk.CoordinatesTable.Coordinates;
 import org.junit.Before;
 import org.junit.Test;
 

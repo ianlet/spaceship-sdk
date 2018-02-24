@@ -29,22 +29,6 @@ class CoordinatesTable {
     }
   }
 
-  public static class Coordinates {
-
-    public final double latitude;
-    public final double longitude;
-
-    public Coordinates(double latitude, double longitude) {
-      this.latitude = latitude;
-      this.longitude = longitude;
-    }
-
-    @Override
-    public String toString() {
-      return String.format("(%f,%f)", latitude, longitude);
-    }
-  }
-
   @FunctionalInterface
   public interface CalculateDirection<T, T1, T2> {
 

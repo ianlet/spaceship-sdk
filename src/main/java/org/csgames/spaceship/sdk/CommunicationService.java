@@ -1,5 +1,6 @@
 package org.csgames.spaceship.sdk;
 
+import static org.csgames.spaceship.sdk.EventType.FISH_CAUGHT;
 import static org.csgames.spaceship.sdk.EventType.FISH_FETCHED;
 import static org.csgames.spaceship.sdk.EventType.MOVED_TO;
 import static org.csgames.spaceship.sdk.EventType.WATER_FETCHED;
@@ -27,7 +28,8 @@ public class CommunicationService {
     recordEvent(WATER_FETCHED, consumer, waterFetchedFrom);
   }
 
-  public void catchFish(String target, double longitude, double latitude) {
+  public void catchFish(String target, Coordinates fishShoalLocation) {
+    recordEvent(FISH_CAUGHT, target, fishShoalLocation.toString());
   }
 
   public void refillWater(String target, double longitude, double latitude) {
