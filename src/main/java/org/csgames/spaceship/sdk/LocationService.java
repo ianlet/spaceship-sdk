@@ -21,23 +21,23 @@ public class LocationService {
   private static final double DEG_TO_RAD = (PI / 180D);
   private static final double RAD_TO_DEG = (180D / PI);
 
-  public int distanceBetween(double lat1, double long1, double lat2, double long2) {
-    return (int) (1000D * haversineInKm(lat1, long1, lat2, long2));
+  public int distanceBetween(Coordinates from, Coordinates to) {
+    return (int) (1000D * haversineInKm(from, to));
   }
 
-  private double haversineInKm(double lat1, double long1, double lat2, double long2) {
-    double dLong = (long2 - long1) * DEG_TO_RAD;
-    double dLat = (lat2 - lat1) * DEG_TO_RAD;
+  private double haversineInKm(Coordinates from, Coordinates to) {
+    double dLong = (to.longitude - from.longitude) * DEG_TO_RAD;
+    double dLat = (to.latitude - from.latitude) * DEG_TO_RAD;
 
-    double a = pow(sin(dLat / 2D), 2D) + (cos(lat1 * DEG_TO_RAD) * cos(lat2 * DEG_TO_RAD)
+    double a = pow(sin(dLat / 2D), 2D) + (cos(from.latitude * DEG_TO_RAD) * cos(to.latitude * DEG_TO_RAD)
       * pow(sin(dLong / 2D), 2D));
     double c = 2D * atan2(sqrt(a), sqrt(1D - a));
 
     return EARTH_RADIUS * c;
   }
 
-  public Direction directionTo(double lat1, double long1, double lat2, double long2) {
-    double bearing = calculateBearing(lat1, long1, lat2, long2);
+  public Direction directionTo(Coordinates from, Coordinates to) {
+    double bearing = calculateBearing(from, to);
 
     if (bearing >= -22.50 && bearing <= 22.50) {
       return NORTH;
@@ -66,12 +66,12 @@ public class LocationService {
     return Direction.NONE;
   }
 
-  private double calculateBearing(double lat1, double long1, double lat2, double long2) {
-    double dLong = (long2 - long1) * DEG_TO_RAD;
-    lat1 *= DEG_TO_RAD;
-    lat2 *= DEG_TO_RAD;
-    double a = sin(dLong) * cos(lat2);
-    double b = (cos(lat1) * sin(lat2)) - (sin(lat1) * cos(lat2) * cos(dLong));
+  private double calculateBearing(Coordinates from, Coordinates to) {
+    double dLong = (to.longitude - from.longitude) * DEG_TO_RAD;
+    double fromLatitude = from.latitude * DEG_TO_RAD;
+    double toLatitude = to.latitude * DEG_TO_RAD;
+    double a = sin(dLong) * cos(toLatitude);
+    double b = (cos(fromLatitude) * sin(toLatitude)) - (sin(fromLatitude) * cos(toLatitude) * cos(dLong));
     return atan2(a, b) * RAD_TO_DEG;
   }
 }
