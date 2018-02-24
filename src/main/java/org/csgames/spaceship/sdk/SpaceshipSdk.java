@@ -15,7 +15,7 @@ public class SpaceshipSdk {
   public static SpaceshipSdk register(String token) {
     HeadquartersClientFactory clientFactory = new HeadquartersClientFactory();
     HeadquartersClient headquartersClient = clientFactory.create(token);
-    SpaceshipService spaceshipService = new SpaceshipService(headquartersClient);
+    SpaceshipService spaceshipService = new SpaceshipService(headquartersClient, SpaceshipBlueprintFactory.generate());
     LocationService locationService = new LocationService();
     CommunicationService communicationService = new CommunicationService(headquartersClient);
     return new SpaceshipSdk(spaceshipService, locationService, communicationService);

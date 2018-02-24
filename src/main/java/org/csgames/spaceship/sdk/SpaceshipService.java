@@ -8,9 +8,11 @@ import static org.csgames.spaceship.sdk.CommandType.SEND_WATER;
 public class SpaceshipService {
 
   private final HeadquartersClient headquartersClient;
+  private final SpaceshipBlueprint spaceshipBlueprint;
 
-  SpaceshipService(HeadquartersClient headquartersClient) {
+  SpaceshipService(HeadquartersClient headquartersClient, SpaceshipBlueprint spaceshipBlueprint) {
     this.headquartersClient = headquartersClient;
+    this.spaceshipBlueprint = spaceshipBlueprint;
   }
 
   public void sendFishTo(String target, int fishCount) {
@@ -34,6 +36,6 @@ public class SpaceshipService {
   }
 
   public SpaceshipBlueprint readBlueprint() {
-    return new SpaceshipBlueprint();
+    return spaceshipBlueprint;
   }
 }

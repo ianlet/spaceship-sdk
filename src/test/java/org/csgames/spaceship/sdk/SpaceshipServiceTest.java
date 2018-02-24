@@ -3,6 +3,7 @@ package org.csgames.spaceship.sdk;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -17,11 +18,13 @@ public class SpaceshipServiceTest {
 
   private HeadquartersClient headquartersClient;
   private SpaceshipService spaceshipService;
+  private SpaceshipBlueprint theSpaceshipBlueprint;
 
   @Before
   public void setUp() throws Exception {
+    theSpaceshipBlueprint = mock(SpaceshipBlueprint.class);
     headquartersClient = mock(HeadquartersClient.class);
-    spaceshipService = new SpaceshipService(headquartersClient);
+    spaceshipService = new SpaceshipService(headquartersClient, theSpaceshipBlueprint);
   }
 
   @Test
@@ -50,6 +53,13 @@ public class SpaceshipServiceTest {
     spaceshipService.closeDoor(THE_ROOM, THE_DOOR_NUMBER);
 
     verifyCommandSent(CommandType.CLOSE_DOOR, THE_ROOM, THE_DOOR_NUMBER);
+  }
+
+  @Test
+  public void itShouldReadTheSpaceshipBlueprint() {
+    SpaceshipBlueprint spaceshipBlueprint = spaceshipService.readBlueprint();
+
+    assertThat(spaceshipBlueprint).isEqualTo(theSpaceshipBlueprint);
   }
 
   private void verifyCommandSent(CommandType commandType, String theTarget, int someFish) {
