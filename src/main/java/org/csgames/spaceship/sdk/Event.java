@@ -16,4 +16,10 @@ class Event {
     this.target = target;
     this.payload = payload;
   }
+
+  Event(EventType type, String target) {
+    this.type = type;
+    this.target = target;
+    this.payload = "";
+  }
 }

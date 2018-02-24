@@ -5,13 +5,13 @@ public class SpaceshipSdk {
   private final SpaceshipService spaceshipService;
   private final LocationService locationService;
   private final CommunicationService communicationService;
-  private final TemperatureLocationService temperatureLocationService;
+  private final TemperatureRegulationService temperatureRegulationService;
 
-  private SpaceshipSdk(SpaceshipService spaceshipService, LocationService locationService, CommunicationService communicationService, TemperatureLocationService temperatureLocationService) {
+  private SpaceshipSdk(SpaceshipService spaceshipService, LocationService locationService, CommunicationService communicationService, TemperatureRegulationService temperatureRegulationService) {
     this.spaceshipService = spaceshipService;
     this.locationService = locationService;
     this.communicationService = communicationService;
-    this.temperatureLocationService = temperatureLocationService;
+    this.temperatureRegulationService = temperatureRegulationService;
   }
 
   public static SpaceshipSdk register(String token) {
@@ -20,8 +20,8 @@ public class SpaceshipSdk {
     SpaceshipService spaceshipService = new SpaceshipService(headquarters, SpaceshipBlueprintFactory.generate());
     LocationService locationService = new LocationService();
     CommunicationService communicationService = new CommunicationService(headquarters);
-    TemperatureLocationService temperatureLocationService = new TemperatureLocationService(headquarters);
-    return new SpaceshipSdk(spaceshipService, locationService, communicationService, temperatureLocationService);
+    TemperatureRegulationService temperatureRegulationService = new TemperatureRegulationService(headquarters);
+    return new SpaceshipSdk(spaceshipService, locationService, communicationService, temperatureRegulationService);
   }
 
   public SpaceshipService getSpaceshipService() {
@@ -36,7 +36,7 @@ public class SpaceshipSdk {
     return communicationService;
   }
 
-  public TemperatureLocationService getTemperatureLocationService() {
-    return temperatureLocationService;
+  public TemperatureRegulationService getTemperatureRegulationService() {
+    return temperatureRegulationService;
   }
 }
