@@ -13,7 +13,9 @@ public class SpaceshipService {
     headquartersClient.sendCommand(command);
   }
 
-  public void sendWaterTo(String source, int waterInLiter) {
+  public void sendWaterTo(String target, int waterInLiter) {
+    Command command = new Command(CommandType.SEND_WATER, target, String.format("%d", waterInLiter));
+    headquartersClient.sendCommand(command);
   }
 
   public void openDoor(Integer doorNumber) {
