@@ -47,6 +47,20 @@ public class TemperatureRegulationServiceTest {
     verifyEventRecorded(EventType.AIR_CONDITIONING_STOPPED, THE_ROOM);
   }
 
+  @Test
+  public void itShouldRecordThatTheRoomHeatingWasStarted() {
+    temperatureRegulationService.startHeating(THE_ROOM);
+
+    verifyEventRecorded(EventType.HEATING_STARTED, THE_ROOM);
+  }
+
+  @Test
+  public void itShouldRecordThatTheRoomHeatingWasStopped() {
+    temperatureRegulationService.stopHeating(THE_ROOM);
+
+    verifyEventRecorded(EventType.HEATING_STOPPED, THE_ROOM);
+  }
+
   private void verifyEventRecorded(EventType eventType, String theRoom) {
     Event expectedEvent = new Event(eventType, theRoom);
     verify(headquarters).recordEvent(expectedEvent);

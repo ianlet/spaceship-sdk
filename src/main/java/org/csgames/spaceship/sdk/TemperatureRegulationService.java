@@ -4,6 +4,8 @@ import static org.csgames.spaceship.sdk.EventType.AIR_CONDITIONING_STARTED;
 import static org.csgames.spaceship.sdk.EventType.AIR_CONDITIONING_STOPPED;
 import static org.csgames.spaceship.sdk.EventType.AIR_VENT_CLOSED;
 import static org.csgames.spaceship.sdk.EventType.AIR_VENT_OPEN;
+import static org.csgames.spaceship.sdk.EventType.HEATING_STARTED;
+import static org.csgames.spaceship.sdk.EventType.HEATING_STOPPED;
 
 public class TemperatureRegulationService {
 
@@ -29,12 +31,12 @@ public class TemperatureRegulationService {
     recordEvent(AIR_CONDITIONING_STOPPED, target);
   }
 
-  public void startHeating() {
-
+  public void startHeating(String target) {
+    recordEvent(HEATING_STARTED, target);
   }
 
-  public void stopHeating() {
-
+  public void stopHeating(String target) {
+    recordEvent(HEATING_STOPPED, target);
   }
 
   private void recordEvent(EventType airConditioningStarted, String target) {
