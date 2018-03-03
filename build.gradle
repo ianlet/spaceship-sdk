@@ -1,8 +1,9 @@
 plugins {
   id 'io.franzbecker.gradle-lombok' version '1.11'
   id 'java'
-  id 'net.researchgate.release' version '2.4.0'
   id 'maven-publish'
+  id 'net.researchgate.release' version '2.4.0'
+  id "com.jfrog.bintray" version "1.7.3"
 }
 
 group 'org.csgames'
@@ -27,6 +28,24 @@ publishing {
   publications {
     mavenJava(MavenPublication) {
       from components.java
+    }
+  }
+}
+
+bintray {
+  user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+  key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+  configurations = ['archives']
+  pkg {
+    repo = 'spaceship'
+    name = 'sdk'
+    userOrg = 'csgames'
+    licenses = ['Apache-2.0']
+    vcsUrl = 'https://github.com/ianlet/spaceship-sdk.git'
+    version {
+      name = "${project.version}"
+      desc = 'CS Games ULaval - TSE - Spaceship SDK'
+      vcsTag = "${project.version}"
     }
   }
 }

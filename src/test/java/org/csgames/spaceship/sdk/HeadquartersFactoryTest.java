@@ -9,16 +9,16 @@ public class HeadquartersFactoryTest {
 
   private static final String A_TOKEN = "";
   private static final String CLIENT_TYPE_FAKE = HeadquartersType.FAKE.name();
-  private HeadquartersClientFactory headquartersClientFactory;
+  private HeadquartersFactory headquartersFactory;
 
   @Before
   public void setUp() throws Exception {
-    headquartersClientFactory = new HeadquartersClientFactory();
+    headquartersFactory = new HeadquartersFactory();
   }
 
   @Test
   public void givenNoClientType_thenCreateFakeHeadquartersClient() {
-    Headquarters spaceshipClient = headquartersClientFactory.create(A_TOKEN);
+    Headquarters spaceshipClient = headquartersFactory.create(A_TOKEN);
 
     assertThat(spaceshipClient).isInstanceOf(HeadquartersFake.class);
   }
@@ -27,7 +27,7 @@ public class HeadquartersFactoryTest {
   public void givenClientTypeFake_thenCreateFakeHeadquartersClient() {
     System.setProperty("clientType", CLIENT_TYPE_FAKE);
 
-    Headquarters headquarters = headquartersClientFactory.create(A_TOKEN);
+    Headquarters headquarters = headquartersFactory.create(A_TOKEN);
 
     assertThat(headquarters).isInstanceOf(HeadquartersFake.class);
   }
