@@ -17,13 +17,16 @@ public class SpaceshipSdk {
   }
 
   public static SpaceshipSdk register(String token) {
-    HeadquartersFactory clientFactory = new HeadquartersFactory();
-    Headquarters headquarters = clientFactory.create(token);
+    if (token == null || token.isEmpty()) throw new RuntimeException("Cannot register team without a token. Please, provide a token with -DteamToken=TOKEN");
+
+    HeadquartersFactory headquartersFactory = new HeadquartersFactory();
+    Headquarters headquarters = headquartersFactory.create(token);
     LocationService locationService = new LocationService();
     EventFactory eventFactory = new EventFactory(Clock.systemDefaultZone());
     SpaceshipService spaceshipService = new SpaceshipService(headquarters, SpaceshipBlueprintFactory.generate(), eventFactory);
     CommunicationService communicationService = new CommunicationService(headquarters, eventFactory);
     TemperatureRegulationService temperatureRegulationService = new TemperatureRegulationService(headquarters, eventFactory);
+
     return new SpaceshipSdk(spaceshipService, locationService, communicationService, temperatureRegulationService);
   }
 
