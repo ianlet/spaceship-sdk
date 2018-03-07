@@ -9,10 +9,12 @@ public class SpaceshipService {
 
   private final Headquarters headquarters;
   private final SpaceshipBlueprint spaceshipBlueprint;
+  private final EventFactory eventFactory;
 
-  SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint) {
+  SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory) {
     this.headquarters = headquarters;
     this.spaceshipBlueprint = spaceshipBlueprint;
+    this.eventFactory = eventFactory;
   }
 
   public void sendFishTo(String target, int fishCount) {
@@ -36,7 +38,7 @@ public class SpaceshipService {
   }
 
   private void recordEvent(EventType eventType, String target, Object payload) {
-    Event event = new Event(eventType, target, String.format("%s", payload));
+    Event event = eventFactory.create(eventType, target, String.format("%s", payload));
     headquarters.recordEvent(event);
   }
 }

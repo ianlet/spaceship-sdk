@@ -9,9 +9,11 @@ import static org.csgames.spaceship.sdk.EventType.WATER_REFILLED;
 public class CommunicationService {
 
   private final Headquarters headquarters;
+  private final EventFactory eventFactory;
 
-  CommunicationService(Headquarters headquarters) {
+  CommunicationService(Headquarters headquarters, EventFactory eventFactory) {
     this.headquarters = headquarters;
+    this.eventFactory = eventFactory;
   }
 
   public void moveTo(String target, Direction direction, int distance) {
@@ -38,7 +40,7 @@ public class CommunicationService {
   }
 
   private void recordEvent(EventType eventType, String target, String payload) {
-    Event event = new Event(eventType, target, payload);
+    Event event = eventFactory.create(eventType, target, payload);
     headquarters.recordEvent(event);
   }
 }

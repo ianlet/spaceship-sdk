@@ -10,9 +10,11 @@ import static org.csgames.spaceship.sdk.EventType.HEATING_STOPPED;
 public class TemperatureRegulationService {
 
   private final Headquarters headquarters;
+  private final EventFactory eventFactory;
 
-  public TemperatureRegulationService(Headquarters headquarters) {
+  public TemperatureRegulationService(Headquarters headquarters, EventFactory eventFactory) {
     this.headquarters = headquarters;
+    this.eventFactory = eventFactory;
   }
 
   public void openAirVent(String target) {
@@ -40,7 +42,7 @@ public class TemperatureRegulationService {
   }
 
   private void recordEvent(EventType airConditioningStarted, String target) {
-    Event event = new Event(airConditioningStarted, target);
+    Event event = eventFactory.create(airConditioningStarted, target);
     headquarters.recordEvent(event);
   }
 }
