@@ -1,5 +1,7 @@
 package org.csgames.spaceship.sdk;
 
+import java.time.Instant;
+
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -7,19 +9,15 @@ import lombok.ToString;
 @ToString
 class Event {
 
-  private final EventType type;
-  private final String target;
-  private final String payload;
+  public final EventType type;
+  public final String target;
+  public final String payload;
+  public final Instant timestamp;
 
-  Event(EventType type, String target, String payload) {
+  Event(EventType type, String target, String payload, Instant timestamp) {
     this.type = type;
     this.target = target;
     this.payload = payload;
-  }
-
-  Event(EventType type, String target) {
-    this.type = type;
-    this.target = target;
-    this.payload = "";
+    this.timestamp = timestamp;
   }
 }

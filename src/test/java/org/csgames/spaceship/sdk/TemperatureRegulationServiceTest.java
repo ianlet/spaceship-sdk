@@ -3,6 +3,10 @@ package org.csgames.spaceship.sdk;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.Clock;
+import java.time.Instant;
+
+import static org.mockito.BDDMockito.willReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -12,11 +16,15 @@ public class TemperatureRegulationServiceTest {
 
   private Headquarters headquarters;
   private TemperatureRegulationService temperatureRegulationService;
+  private EventFactory eventFactory;
 
   @Before
   public void setUp() throws Exception {
     headquarters = mock(Headquarters.class);
-    temperatureRegulationService = new TemperatureRegulationService(headquarters);
+    Clock clock = mock(Clock.class);
+    willReturn(Instant.now()).given(clock).instant();
+    eventFactory = new EventFactory(clock);
+    temperatureRegulationService = new TemperatureRegulationService(headquarters, eventFactory);
   }
 
   @Test
@@ -62,7 +70,7 @@ public class TemperatureRegulationServiceTest {
   }
 
   private void verifyEventRecorded(EventType eventType, String theRoom) {
-    Event expectedEvent = new Event(eventType, theRoom);
+    Event expectedEvent = eventFactory.create(eventType, theRoom);
     verify(headquarters).recordEvent(expectedEvent);
   }
 }

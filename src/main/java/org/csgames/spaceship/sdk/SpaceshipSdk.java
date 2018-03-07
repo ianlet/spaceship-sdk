@@ -1,5 +1,7 @@
 package org.csgames.spaceship.sdk;
 
+import java.time.Clock;
+
 public class SpaceshipSdk {
 
   private final SpaceshipService spaceshipService;
@@ -17,10 +19,11 @@ public class SpaceshipSdk {
   public static SpaceshipSdk register(String token) {
     HeadquartersFactory clientFactory = new HeadquartersFactory();
     Headquarters headquarters = clientFactory.create(token);
-    SpaceshipService spaceshipService = new SpaceshipService(headquarters, SpaceshipBlueprintFactory.generate());
     LocationService locationService = new LocationService();
-    CommunicationService communicationService = new CommunicationService(headquarters);
-    TemperatureRegulationService temperatureRegulationService = new TemperatureRegulationService(headquarters);
+    EventFactory eventFactory = new EventFactory(Clock.systemDefaultZone());
+    SpaceshipService spaceshipService = new SpaceshipService(headquarters, SpaceshipBlueprintFactory.generate(), eventFactory);
+    CommunicationService communicationService = new CommunicationService(headquarters, eventFactory);
+    TemperatureRegulationService temperatureRegulationService = new TemperatureRegulationService(headquarters, eventFactory);
     return new SpaceshipSdk(spaceshipService, locationService, communicationService, temperatureRegulationService);
   }
 

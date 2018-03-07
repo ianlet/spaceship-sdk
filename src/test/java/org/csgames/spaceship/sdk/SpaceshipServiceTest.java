@@ -3,7 +3,11 @@ package org.csgames.spaceship.sdk;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.Clock;
+import java.time.Instant;
+
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.BDDMockito.willReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -19,12 +23,16 @@ public class SpaceshipServiceTest {
   private Headquarters headquarters;
   private SpaceshipService spaceshipService;
   private SpaceshipBlueprint theSpaceshipBlueprint;
+  private EventFactory eventFactory;
 
   @Before
   public void setUp() throws Exception {
     theSpaceshipBlueprint = mock(SpaceshipBlueprint.class);
     headquarters = mock(Headquarters.class);
-    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint);
+    Clock clock = mock(Clock.class);
+    willReturn(Instant.now()).given(clock).instant();
+    eventFactory = new EventFactory(clock);
+    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint, eventFactory);
   }
 
   @Test
@@ -63,7 +71,7 @@ public class SpaceshipServiceTest {
   }
 
   private void verifyEventRecorded(EventType eventType, String theTarget, int payload) {
-    Event expectedEvent = new Event(eventType, theTarget, String.format("%d", payload));
+    Event expectedEvent = eventFactory.create(eventType, theTarget, String.format("%d", payload));
     verify(headquarters).recordEvent(expectedEvent);
   }
 }

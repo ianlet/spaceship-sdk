@@ -3,6 +3,10 @@ package org.csgames.spaceship.sdk;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.Clock;
+import java.time.Instant;
+
+import static org.mockito.BDDMockito.willReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -21,11 +25,15 @@ public class CommunicationServiceTest {
 
   private Headquarters headquarters;
   private CommunicationService communicationService;
+  private EventFactory eventFactory;
 
   @Before
   public void setUp() throws Exception {
     headquarters = mock(Headquarters.class);
-    communicationService = new CommunicationService(headquarters);
+    Clock clock = mock(Clock.class);
+    willReturn(Instant.now()).given(clock).instant();
+    eventFactory = new EventFactory(clock);
+    communicationService = new CommunicationService(headquarters, eventFactory);
   }
 
   @Test
@@ -67,7 +75,7 @@ public class CommunicationServiceTest {
   }
 
   private void verifyEventRecorded(EventType eventType, String target, String payload) {
-    Event expectedEvent = new Event(eventType, target, payload);
+    Event expectedEvent = eventFactory.create(eventType, target, payload);
     verify(headquarters).recordEvent(expectedEvent);
   }
 }

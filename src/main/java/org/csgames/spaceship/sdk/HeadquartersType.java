@@ -1,7 +1,7 @@
 package org.csgames.spaceship.sdk;
 
 enum HeadquartersType {
-  FAKE;
+  FAKE, ACCEPTANCE_TESTS;
 
   public static HeadquartersType fromString(String type) {
     if (type == null || type.equals("")) {
