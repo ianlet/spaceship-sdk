@@ -1,0 +1,4 @@
+{
+  "name": "Send supplies to a research team",
+  "scenarios": [ "fish_count_too_low", "water_supply_too_low", "enough_supply" ]
+}

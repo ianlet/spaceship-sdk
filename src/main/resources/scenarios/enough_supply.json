@@ -1,0 +1,5 @@
+{
+  "name": "Enough supply",
+  "events": ["supply_consumed"],
+  "results": ["nothing_happened"]
+}

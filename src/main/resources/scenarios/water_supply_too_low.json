@@ -1,0 +1,5 @@
+{
+  "name": "Water supply too low",
+  "events": ["consumed_too_much_water"],
+  "results": ["water_sent_to_target"]
+}

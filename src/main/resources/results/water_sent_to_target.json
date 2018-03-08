@@ -1,0 +1,8 @@
+{
+  "name": "Water should have been sent to target",
+  "events": {
+    "type": "WATER_SENT",
+    "target": "team-01",
+    "payload": "15"
+  }
+}

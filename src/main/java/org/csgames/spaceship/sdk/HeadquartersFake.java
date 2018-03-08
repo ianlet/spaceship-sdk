@@ -13,4 +13,14 @@ class HeadquartersFake implements Headquarters {
     System.out.println(String.format("\uD83D\uDC27 >> New event recorded from %s!", token));
     System.out.println(String.format("\uD83D\uDC27 >> Here's what they just did: %s", event));
   }
+
+  @Override
+  public boolean wasEventRecorded(Event event) {
+    return true;
+  }
+
+  @Override
+  public boolean hasRecordedAnyEvent() {
+    return true;
+  }
 }

@@ -1,17 +1,12 @@
 package org.csgames.spaceship.sdk;
 
-import java.time.Clock;
-
 public class EventFactory {
 
-  private final Clock clock;
-
-  public EventFactory(Clock clock) {
-    this.clock = clock;
+  public EventFactory() {
   }
 
   public Event create(EventType eventType, String target, String payload) {
-    return new Event(eventType, target, payload, clock.instant());
+    return new Event(eventType, target, payload);
   }
 
   public Event create(EventType eventType, String target) {

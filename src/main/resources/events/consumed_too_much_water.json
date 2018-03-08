@@ -1,0 +1,6 @@
+{
+  "name": "Consumed too much water",
+  "type": "SUPPLY_CONSUMED",
+  "source": "team-01",
+  "payload": "16,1.33"
+}

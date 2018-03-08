@@ -10,20 +10,20 @@ import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
-import java.time.Clock;
-import java.time.Instant;
-
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.BDDMockito.willReturn;
-import static org.mockito.Mockito.mock;
 
 public class HeadquartersMongoTest {
 
+  private static final String DATABASE_NAME = "spaceship-test";
   private static final String TEAM_TOKEN = "team-space-seals";
+
   private static final String RECORDED_EVENT_TARGET = "team-01";
   private static final String RECORDED_EVENT_PAYLOAD = "34.654334,27.384293";
   private static final EventType RECORDED_EVENT_TYPE = EventType.MOVED_TO;
-  private static final String DATABASE_NAME = "spaceship-test";
+
+  private static final EventType UNRECORDED_EVENT_TYPE = EventType.FISH_CAUGHT;
+  private static final String UNRECORDED_EVENT_TARGET = "no-target";
+  private static final String UNRECORDED_EVENT_PAYLOAD = "no-payload";
 
   private Datastore datastore;
 
@@ -32,8 +32,7 @@ public class HeadquartersMongoTest {
 
   @Before
   public void setUp() throws Exception {
-    Clock clock = setUpClock();
-    eventFactory = new EventFactory(clock);
+    eventFactory = new EventFactory();
     datastore = setUpMongo();
 
     headquarters = new HeadquartersMongo(datastore, TEAM_TOKEN);
@@ -45,22 +44,37 @@ public class HeadquartersMongoTest {
 
     headquarters.recordEvent(recordedEvent);
 
-    assertThatTheRecordedEventIsPersisted(recordedEvent);
+    assertThat(headquarters.wasEventRecorded(recordedEvent)).isTrue();
   }
 
-  private void assertThatTheRecordedEventIsPersisted(Event recordedEvent) {
-    EventMongo persistedEvent = datastore.find(EventMongo.class).get();
-    assertThat(persistedEvent.team).isEqualTo(TEAM_TOKEN);
-    assertThat(persistedEvent.type).isEqualTo(recordedEvent.type);
-    assertThat(persistedEvent.target).isEqualTo(recordedEvent.target);
-    assertThat(persistedEvent.payload).isEqualTo(recordedEvent.payload);
-    assertThat(persistedEvent.timestamp).isEqualTo(recordedEvent.timestamp);
+  @Test
+  public void itShouldReturnTrue_givenTheEventWasRecorded() {
+    Event recordedEvent = eventFactory.create(RECORDED_EVENT_TYPE, RECORDED_EVENT_TARGET, RECORDED_EVENT_PAYLOAD);
+
+    headquarters.recordEvent(recordedEvent);
+
+    assertThat(headquarters.wasEventRecorded(recordedEvent)).isTrue();
   }
 
-  private Clock setUpClock() {
-    Clock clock = mock(Clock.class);
-    willReturn(Instant.now()).given(clock).instant();
-    return clock;
+  @Test
+  public void itShouldReturnFalse_givenTheEventWasNotRecorded() {
+    Event recordedEvent = eventFactory.create(UNRECORDED_EVENT_TYPE, UNRECORDED_EVENT_TARGET, UNRECORDED_EVENT_PAYLOAD);
+
+    assertThat(headquarters.wasEventRecorded(recordedEvent)).isFalse();
+  }
+
+  @Test
+  public void itShouldReturnFalse_givenNoEventRecorded() {
+    assertThat(headquarters.hasRecordedAnyEvent()).isFalse();
+  }
+
+  @Test
+  public void itShouldReturnTrue_givenAnEventWasRecorded() {
+    Event recordedEvent = eventFactory.create(RECORDED_EVENT_TYPE, RECORDED_EVENT_TARGET, RECORDED_EVENT_PAYLOAD);
+
+    headquarters.recordEvent(recordedEvent);
+
+    assertThat(headquarters.hasRecordedAnyEvent()).isTrue();
   }
 
   private Datastore setUpMongo() {

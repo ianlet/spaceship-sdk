@@ -1,0 +1,6 @@
+{
+  "name": "Consumed too many fish",
+  "type": "SUPPLY_CONSUMED",
+  "source": "team-01",
+  "payload": "4,55"
+}
