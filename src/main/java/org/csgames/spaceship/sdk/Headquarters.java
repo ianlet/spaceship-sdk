@@ -7,4 +7,6 @@ public interface Headquarters {
   boolean wasEventRecorded(Event event);
 
   boolean hasRecordedAnyEvent();
+
+  void purgeEvents();
 }

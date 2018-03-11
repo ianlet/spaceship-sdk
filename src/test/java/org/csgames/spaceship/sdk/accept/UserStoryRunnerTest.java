@@ -1,5 +1,6 @@
 package org.csgames.spaceship.sdk.accept;
 
+import org.csgames.spaceship.sdk.Headquarters;
 import org.csgames.spaceship.sdk.accept.userstory.Scenario;
 import org.csgames.spaceship.sdk.accept.userstory.UserStory;
 import org.junit.Before;
@@ -23,11 +24,13 @@ public class UserStoryRunnerTest {
   private ScenarioRunner scenarioRunner;
 
   private UserStoryRunner userStoryRunner;
+  private Headquarters headquarters;
 
   @Before
   public void setUp() throws Exception {
     scenarioRunner = mock(ScenarioRunner.class);
     willThrow(ScenarioFailedException.class).given(scenarioRunner).accept(unsuccessfulScenario);
+    headquarters = mock(Headquarters.class);
 
     userStoryRunner = new UserStoryRunner(scenarioRunner);
   }

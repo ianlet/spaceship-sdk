@@ -77,6 +77,16 @@ public class HeadquartersMongoTest {
     assertThat(headquarters.hasRecordedAnyEvent()).isTrue();
   }
 
+  @Test
+  public void itShouldPurgeRecordedEvents() {
+    Event recordedEvent = eventFactory.create(RECORDED_EVENT_TYPE, RECORDED_EVENT_TARGET, RECORDED_EVENT_PAYLOAD);
+    headquarters.recordEvent(recordedEvent);
+
+    headquarters.purgeEvents();
+
+    assertThat(headquarters.hasRecordedAnyEvent()).isFalse();
+  }
+
   private Datastore setUpMongo() {
     Morphia morphia = new Morphia(Sets.newHashSet(EventMongo.class));
     MongoClient mongoClient = new Fongo(DATABASE_NAME).getMongo();

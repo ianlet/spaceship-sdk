@@ -36,4 +36,9 @@ public class HeadquartersMongo implements Headquarters {
   public boolean hasRecordedAnyEvent() {
     return datastore.find(EventMongo.class).get() != null;
   }
+
+  @Override
+  public void purgeEvents() {
+    datastore.delete(datastore.createQuery(EventMongo.class));
+  }
 }

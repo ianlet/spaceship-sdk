@@ -23,4 +23,8 @@ public class HeadquartersFake implements Headquarters {
   public boolean hasRecordedAnyEvent() {
     return true;
   }
+
+  @Override
+  public void purgeEvents() {
+  }
 }

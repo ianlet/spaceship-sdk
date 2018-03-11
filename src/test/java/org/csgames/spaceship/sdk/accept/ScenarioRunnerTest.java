@@ -27,8 +27,11 @@ public class ScenarioRunnerTest {
   private static final EventType AN_EVENT_TYPE = EventType.FISH_CAUGHT;
   private static final Event NO_EVENT = null;
 
+  private final InputEvent anInputEvent = new InputEvent("an event", "event type", "source", "payload");
   private final InputEvent firstInputEvent = new InputEvent("first event", "event type", "source", "payload");
   private final InputEvent secondInputEvent = new InputEvent("second event", "event type", "source", "payload");
+
+  private final Result aResult = new Result("result", null);
 
   private SpaceshipApi spaceshipApi;
   private EventFactory eventFactory;
@@ -82,6 +85,17 @@ public class ScenarioRunnerTest {
     Scenario scenario = new Scenario(A_SCENARIO, emptyList(), asList(result));
 
     scenarioRunner.accept(scenario);
+  }
+
+  @Test
+  public void itShouldPurgeHeadquartersEventsBeforeAcceptingTheScenario() {
+    Scenario scenario = new Scenario(A_SCENARIO, asList(anInputEvent), asList(aResult));
+
+    scenarioRunner.accept(scenario);
+
+    InOrder inOrder = inOrder(headquarters, spaceshipApi);
+    inOrder.verify(headquarters).purgeEvents();
+    inOrder.verify(spaceshipApi).sendEvent(anInputEvent);
   }
 
   private Result givenResultExpectingAnEventNotRecorded() {

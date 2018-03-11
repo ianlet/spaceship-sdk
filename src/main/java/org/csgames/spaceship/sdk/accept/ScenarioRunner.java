@@ -16,6 +16,7 @@ public class ScenarioRunner {
   }
 
   public void accept(Scenario scenario) {
+    headquarters.purgeEvents();
     scenario.events.forEach(spaceshipApi::sendEvent);
     scenario.results.forEach(this::ensureResultIsSatisfied);
   }
