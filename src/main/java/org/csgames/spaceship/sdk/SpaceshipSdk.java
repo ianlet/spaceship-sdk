@@ -1,12 +1,12 @@
 package org.csgames.spaceship.sdk;
 
-import com.google.gson.Gson;
-
 import org.csgames.spaceship.sdk.accept.AcceptanceService;
 import org.csgames.spaceship.sdk.accept.ScenarioRunner;
 import org.csgames.spaceship.sdk.accept.SpaceshipApi;
 import org.csgames.spaceship.sdk.accept.SpaceshipApiUnirest;
 import org.csgames.spaceship.sdk.accept.UserStoryRunner;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.context.Context;
 import org.csgames.spaceship.sdk.context.ContextFactory;
@@ -50,11 +50,11 @@ public class SpaceshipSdk {
   public AcceptanceService createAcceptanceService(int port) {
     UserStoryRepository userStoryRepository = locate(UserStoryRepository.class);
     Headquarters headquarters = locate(Headquarters.class);
-    Gson gson = locate(Gson.class);
-    SpaceshipApi spaceshipApi = new SpaceshipApiUnirest(port, gson);
+    SpaceshipApi spaceshipApi = new SpaceshipApiUnirest(port);
     ScenarioRunner scenarioRunner = new ScenarioRunner(spaceshipApi, headquarters);
     UserStoryRunner userStoryRunner = new UserStoryRunner(scenarioRunner);
-    EventFactory eventFactory = locate(EventFactory.class);
-    return new AcceptanceService(token, userStoryRepository, userStoryRunner, headquarters, eventFactory);
+    UserStoryResultFactory userStoryResultFactory = locate(UserStoryResultFactory.class);
+    UserStoryResultStore userStoryResultStore = locate(UserStoryResultStore.class);
+    return new AcceptanceService(token, userStoryRepository, userStoryRunner, userStoryResultFactory, userStoryResultStore);
   }
 }

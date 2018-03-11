@@ -14,9 +14,9 @@ public class SpaceshipApiUnirest implements SpaceshipApi {
   private final int port;
   private final Gson gson;
 
-  public SpaceshipApiUnirest(int port, Gson gson) {
+  public SpaceshipApiUnirest(int port) {
     this.port = port;
-    this.gson = gson;
+    this.gson = new Gson();
   }
 
   @Override

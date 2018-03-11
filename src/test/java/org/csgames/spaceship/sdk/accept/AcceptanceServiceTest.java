@@ -1,17 +1,19 @@
 package org.csgames.spaceship.sdk.accept;
 
-import org.csgames.spaceship.sdk.Event;
-import org.csgames.spaceship.sdk.EventFactory;
-import org.csgames.spaceship.sdk.EventType;
-import org.csgames.spaceship.sdk.Headquarters;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResult;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultType;
 import org.csgames.spaceship.sdk.accept.userstory.UserStory;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.Clock;
+import java.time.Instant;
+
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
-import static org.csgames.spaceship.sdk.EventType.USER_STORY_SUCCEEDED;
 import static org.mockito.BDDMockito.willReturn;
 import static org.mockito.BDDMockito.willThrow;
 import static org.mockito.Mockito.mock;
@@ -26,19 +28,26 @@ public class AcceptanceServiceTest {
 
   private UserStoryRepository userStoryRepository;
   private UserStoryRunner userStoryRunner;
-  private Headquarters headquarters;
-  private EventFactory eventFactory;
+  private UserStoryResultFactory userStoryResultFactory;
+  private UserStoryResultStore userStoryResultStore;
 
   private AcceptanceService acceptanceService;
 
   @Before
   public void setUp() throws Exception {
-    eventFactory = new EventFactory();
+    Clock clock = setUpClock();
+    userStoryResultFactory = new UserStoryResultFactory(clock);
     userStoryRepository = mock(UserStoryRepository.class);
     userStoryRunner = mock(UserStoryRunner.class);
-    headquarters = mock(Headquarters.class);
+    userStoryResultStore = mock(UserStoryResultStore.class);
 
-    acceptanceService = new AcceptanceService(TEAM_TOKEN, userStoryRepository, userStoryRunner, headquarters, eventFactory);
+    acceptanceService = new AcceptanceService(TEAM_TOKEN, userStoryRepository, userStoryRunner, userStoryResultFactory, userStoryResultStore);
+  }
+
+  private Clock setUpClock() {
+    Clock clock = mock(Clock.class);
+    willReturn(Instant.now()).given(clock).instant();
+    return clock;
   }
 
   @Test
@@ -57,8 +66,8 @@ public class AcceptanceServiceTest {
 
     acceptanceService.acceptUserStories();
 
-    Event userStorySucceeded = eventFactory.create(USER_STORY_SUCCEEDED, TEAM_TOKEN, userStory.name);
-    verify(headquarters).recordEvent(userStorySucceeded);
+    UserStoryResult userStorySucceeded = userStoryResultFactory.create(UserStoryResultType.SUCCEEDED, TEAM_TOKEN, userStory.name);
+    verify(userStoryResultStore).store(userStorySucceeded);
   }
 
   @Test
@@ -67,8 +76,8 @@ public class AcceptanceServiceTest {
 
     acceptanceService.acceptUserStories();
 
-    Event userStoryFailed = eventFactory.create(EventType.USER_STORY_FAILED, TEAM_TOKEN, userStory.name);
-    verify(headquarters).recordEvent(userStoryFailed);
+    UserStoryResult userStoryFailed = userStoryResultFactory.create(UserStoryResultType.FAILED, TEAM_TOKEN, userStory.name);
+    verify(userStoryResultStore).store(userStoryFailed);
   }
 
   private UserStory givenSuccessfulUserStory() {

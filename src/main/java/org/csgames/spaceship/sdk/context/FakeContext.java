@@ -1,8 +1,5 @@
 package org.csgames.spaceship.sdk.context;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import org.csgames.spaceship.sdk.CommunicationService;
 import org.csgames.spaceship.sdk.EventFactory;
 import org.csgames.spaceship.sdk.Headquarters;
@@ -11,10 +8,13 @@ import org.csgames.spaceship.sdk.LocationService;
 import org.csgames.spaceship.sdk.SpaceshipBlueprint;
 import org.csgames.spaceship.sdk.SpaceshipService;
 import org.csgames.spaceship.sdk.TemperatureRegulationService;
-import org.csgames.spaceship.sdk.accept.userstory.UserStory;
-import org.csgames.spaceship.sdk.accept.userstory.UserStoryDeserializer;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
+import org.csgames.spaceship.sdk.accept.result.UserStoryResultStoreFake;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepositoryFake;
+
+import java.time.Clock;
 
 import static org.csgames.spaceship.sdk.context.ServiceLocator.register;
 
@@ -52,10 +52,10 @@ public class FakeContext implements Context {
     UserStoryRepository userStoryRepository = new UserStoryRepositoryFake();
     register(UserStoryRepository.class, userStoryRepository);
 
-    UserStoryDeserializer userStoryDeserializer = new UserStoryDeserializer();
-    register(UserStoryDeserializer.class, userStoryDeserializer);
+    UserStoryResultStore userStoryResultStore = new UserStoryResultStoreFake();
+    register(UserStoryResultStore.class, userStoryResultStore);
 
-    Gson gson = new GsonBuilder().registerTypeAdapter(UserStory.class, userStoryDeserializer).create();
-    register(Gson.class, gson);
+    UserStoryResultFactory userStoryResultFactory = new UserStoryResultFactory(Clock.systemDefaultZone());
+    register(UserStoryResultFactory.class, userStoryResultFactory);
   }
 }
