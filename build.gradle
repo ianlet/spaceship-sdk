@@ -1,9 +1,10 @@
 plugins {
   id 'io.franzbecker.gradle-lombok' version '1.11'
-  id 'java'
-  id 'maven-publish'
   id 'net.researchgate.release' version '2.4.0'
   id "com.jfrog.bintray" version "1.7.3"
+  id 'maven'
+  id 'maven-publish'
+  id 'java'
 }
 
 group 'org.csgames'
@@ -31,10 +32,26 @@ dependencies {
 publishing {
   publications {
     mavenJava(MavenPublication) {
+      groupId group
+      artifactId name
+      version version
+
       from components.java
     }
   }
 }
+
+task createPom << {
+  pom {
+    project {
+      groupId group
+      artifactId name
+      version version
+    }
+  }.writeTo("build/libs/pom.xml")
+}
+
+build.dependsOn createPom
 
 bintray {
   user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
@@ -53,4 +70,3 @@ bintray {
     }
   }
 }
-
