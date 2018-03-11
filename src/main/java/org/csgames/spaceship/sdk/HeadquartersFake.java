@@ -1,10 +1,10 @@
 package org.csgames.spaceship.sdk;
 
-class HeadquartersFake implements Headquarters {
+public class HeadquartersFake implements Headquarters {
 
   private final String token;
 
-  HeadquartersFake(String token) {
+  public HeadquartersFake(String token) {
     this.token = token;
   }
 

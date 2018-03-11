@@ -11,7 +11,7 @@ public class CommunicationService {
   private final Headquarters headquarters;
   private final EventFactory eventFactory;
 
-  CommunicationService(Headquarters headquarters, EventFactory eventFactory) {
+  public CommunicationService(Headquarters headquarters, EventFactory eventFactory) {
     this.headquarters = headquarters;
     this.eventFactory = eventFactory;
   }

@@ -11,7 +11,7 @@ public class SpaceshipService {
   private final SpaceshipBlueprint spaceshipBlueprint;
   private final EventFactory eventFactory;
 
-  SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory) {
+  public SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory) {
     this.headquarters = headquarters;
     this.spaceshipBlueprint = spaceshipBlueprint;
     this.eventFactory = eventFactory;
