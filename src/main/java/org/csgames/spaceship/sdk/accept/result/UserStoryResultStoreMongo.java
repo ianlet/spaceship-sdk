@@ -17,6 +17,6 @@ public class UserStoryResultStoreMongo implements UserStoryResultStore {
   }
 
   private UserStoryResultMongo assembleResult(UserStoryResult userStoryResult) {
-    return new UserStoryResultMongo(userStoryResult.name, userStoryResult.team, userStoryResult.type);
+    return new UserStoryResultMongo(userStoryResult.name, userStoryResult.team, userStoryResult.type, userStoryResult.timestamp);
   }
 }

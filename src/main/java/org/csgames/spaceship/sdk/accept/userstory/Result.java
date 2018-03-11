@@ -4,11 +4,11 @@ import org.csgames.spaceship.sdk.Event;
 
 public class Result {
 
-  private String result;
+  public String name;
   public Event event;
 
-  public Result(String result, Event event) {
-    this.result = result;
+  public Result(String name, Event event) {
+    this.name = name;
     this.event = event;
   }
 

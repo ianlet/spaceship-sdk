@@ -11,6 +11,6 @@ public class UserStoryResultFactory {
   }
 
   public UserStoryResult create(UserStoryResultType type, String teamToken, String name) {
-    return new UserStoryResult(type, teamToken, name);
+    return new UserStoryResult(type, teamToken, name, clock.instant());
   }
 }
