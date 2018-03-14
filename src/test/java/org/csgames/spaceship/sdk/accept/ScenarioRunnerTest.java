@@ -46,8 +46,9 @@ public class ScenarioRunnerTest {
     spaceshipApi = mock(SpaceshipApi.class);
     headquarters = mock(Headquarters.class);
     willReturn(true).given(headquarters).wasEventRecorded(any());
+    ScenarioReporter reporter = mock(ScenarioReporter.class);
 
-    scenarioRunner = new ScenarioRunner(spaceshipApi, headquarters);
+    scenarioRunner = new ScenarioRunner(spaceshipApi, headquarters, reporter);
   }
 
   @Test

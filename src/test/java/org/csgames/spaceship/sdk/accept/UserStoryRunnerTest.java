@@ -31,8 +31,9 @@ public class UserStoryRunnerTest {
     scenarioRunner = mock(ScenarioRunner.class);
     willThrow(ScenarioFailedException.class).given(scenarioRunner).accept(unsuccessfulScenario);
     headquarters = mock(Headquarters.class);
+    UserStoryReporter reporter = mock(UserStoryReporter.class);
 
-    userStoryRunner = new UserStoryRunner(scenarioRunner);
+    userStoryRunner = new UserStoryRunner(scenarioRunner, reporter);
   }
 
   @Test
