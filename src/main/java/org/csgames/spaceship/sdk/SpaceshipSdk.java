@@ -1,6 +1,7 @@
 package org.csgames.spaceship.sdk;
 
 import org.csgames.spaceship.sdk.accept.AcceptanceService;
+import org.csgames.spaceship.sdk.accept.ConsoleReporter;
 import org.csgames.spaceship.sdk.accept.ScenarioRunner;
 import org.csgames.spaceship.sdk.accept.SpaceshipApi;
 import org.csgames.spaceship.sdk.accept.SpaceshipApiUnirest;
@@ -51,8 +52,9 @@ public class SpaceshipSdk {
     UserStoryRepository userStoryRepository = locate(UserStoryRepository.class);
     Headquarters headquarters = locate(Headquarters.class);
     SpaceshipApi spaceshipApi = new SpaceshipApiUnirest(port);
-    ScenarioRunner scenarioRunner = new ScenarioRunner(spaceshipApi, headquarters);
-    UserStoryRunner userStoryRunner = new UserStoryRunner(scenarioRunner);
+    ConsoleReporter reporter = new ConsoleReporter();
+    ScenarioRunner scenarioRunner = new ScenarioRunner(spaceshipApi, headquarters, reporter);
+    UserStoryRunner userStoryRunner = new UserStoryRunner(scenarioRunner, reporter);
     UserStoryResultFactory userStoryResultFactory = locate(UserStoryResultFactory.class);
     UserStoryResultStore userStoryResultStore = locate(UserStoryResultStore.class);
     return new AcceptanceService(token, userStoryRepository, userStoryRunner, userStoryResultFactory, userStoryResultStore);
