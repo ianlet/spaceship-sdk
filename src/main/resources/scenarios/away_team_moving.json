@@ -1,0 +1,5 @@
+{
+  "name": "Away team 01 is moving",
+  "events": ["away_team_01_at_ship", "away_team_01_moved"],
+  "results": ["away_team_01_is_moving"]
+}

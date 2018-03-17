@@ -1,0 +1,8 @@
+{
+  "name": "C02 level recorded",
+  "event": {
+    "type": "DATA_MEASURED",
+    "target": "C02",
+    "payload": "32.02"
+  }
+}

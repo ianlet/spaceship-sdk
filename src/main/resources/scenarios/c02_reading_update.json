@@ -1,0 +1,5 @@
+{
+  "name": "C02 reading was made",
+  "events": ["c02_measured_again"],
+  "results": ["c02_measure_updated"]
+}

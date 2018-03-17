@@ -1,0 +1,4 @@
+{
+  "name": "Away team is exploring",
+  "scenarios": [ "away_team_01_is_moving", "away_team_01_is_stationary" ]
+}

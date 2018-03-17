@@ -1,0 +1,8 @@
+{
+  "name": "Rock resource should have been registered",
+  "event": {
+    "type": "POI_DISCOVERED",
+    "target": "rock",
+    "payload": "34.014423,99.672300"
+  }
+}
