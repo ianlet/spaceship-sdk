@@ -1,0 +1,8 @@
+{
+  "name": "Water resource should have been registered",
+  "event": {
+    "type": "POI_DISCOVERED",
+    "target": "water",
+    "payload": "10.014423,51.672300"
+  }
+}
