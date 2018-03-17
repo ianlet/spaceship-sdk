@@ -11,7 +11,7 @@ public class Event {
   public final String target;
   public final String payload;
 
-  Event(EventType type, String target, String payload) {
+  public Event(EventType type, String target, String payload) {
     this.type = type;
     this.target = target;
     this.payload = payload;

@@ -11,6 +11,7 @@ import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.context.Context;
 import org.csgames.spaceship.sdk.context.ContextFactory;
+import org.csgames.spaceship.sdk.service.TeamPositioningService;
 
 import static org.csgames.spaceship.sdk.context.ServiceLocator.locate;
 
@@ -46,6 +47,10 @@ public class SpaceshipSdk {
 
   public TemperatureRegulationService getTemperatureRegulationService() {
     return locate(TemperatureRegulationService.class);
+  }
+
+  public TeamPositioningService getTeamPositioningService() {
+    return locate(TeamPositioningService.class);
   }
 
   public AcceptanceService createAcceptanceService(int port) {

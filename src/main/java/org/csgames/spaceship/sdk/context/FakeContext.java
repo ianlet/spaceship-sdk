@@ -13,6 +13,7 @@ import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultStoreFake;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepositoryFake;
+import org.csgames.spaceship.sdk.service.TeamPositioningService;
 
 import java.time.Clock;
 
@@ -48,6 +49,9 @@ public class FakeContext implements Context {
 
     SpaceshipService spaceshipService = new SpaceshipService(headquarters, spaceshipBlueprint, eventFactory);
     register(SpaceshipService.class, spaceshipService);
+
+    TeamPositioningService teamPositioningService = new TeamPositioningService(eventFactory, headquarters);
+    register(TeamPositioningService.class, teamPositioningService);
 
     UserStoryRepository userStoryRepository = new UserStoryRepositoryFake();
     register(UserStoryRepository.class, userStoryRepository);
