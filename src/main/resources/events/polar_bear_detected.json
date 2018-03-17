@@ -1,0 +1,5 @@
+{
+  "type": "PREDATORS_DETECTED",
+  "source": "polar bear",
+  "payload": "55.239999,23.444566"
+}
