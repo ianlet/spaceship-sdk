@@ -1,0 +1,5 @@
+{
+  "name": "Away Team is safe",
+  "events": ["away_team_01_at_ship", "polar_bear_detected"],
+  "results": ["nothing_happened"]
+}
