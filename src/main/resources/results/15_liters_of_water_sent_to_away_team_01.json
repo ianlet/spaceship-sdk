@@ -1,5 +1,5 @@
 {
-  "name": "Water should have been sent to away team 01",
+  "name": "15 liters of water should have been sent to Away Team 01",
   "event": {
     "type": "WATER_SENT",
     "target": "away-team-01",

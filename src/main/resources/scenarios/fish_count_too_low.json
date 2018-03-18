@@ -1,5 +1,9 @@
 {
   "name": "Fish count too low",
-  "events": ["consumed_too_many_fish"],
-  "results": ["fish_sent_to_target"]
+  "events": [
+    "away_team_01_consumed_too_many_fish"
+  ],
+  "results": [
+    "15_fish_sent_to_away_team_01"
+  ]
 }
