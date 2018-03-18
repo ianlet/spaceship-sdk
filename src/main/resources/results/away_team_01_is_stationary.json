@@ -1,5 +1,5 @@
 {
-  "name": "Away Team 01 status changed to moving",
+  "name": "Away Team 01 status changed to stationary",
   "event": {
     "type": "TEAM_STATUS_REPORTED",
     "target": "away-team-01",
