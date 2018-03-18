@@ -12,6 +12,7 @@ import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.context.Context;
 import org.csgames.spaceship.sdk.context.ContextFactory;
 import org.csgames.spaceship.sdk.service.AwayTeamLogService;
+import org.csgames.spaceship.sdk.service.PlanetResourceService;
 
 import static org.csgames.spaceship.sdk.context.ServiceLocator.locate;
 
@@ -51,6 +52,10 @@ public class SpaceshipSdk {
 
   public AwayTeamLogService getTeamPositioningService() {
     return locate(AwayTeamLogService.class);
+  }
+
+  public PlanetResourceService getPlanetResourceService() {
+    return locate(PlanetResourceService.class);
   }
 
   public AcceptanceService createAcceptanceService(int port) {
