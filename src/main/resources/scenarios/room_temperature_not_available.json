@@ -1,0 +1,5 @@
+{
+  "name": "Room average at minus 7.5 and can't check room 04 temperature",
+  "events": ["room_01_at_zero_celsius", "room_02_at_minus_15_celsius", "room_04_temperature_sensor_not_working", "check_ship_temperature"],
+  "results": ["room_01_door_is_opened", "room_04_door_is_opened"]
+}

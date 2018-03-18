@@ -1,0 +1,9 @@
+{
+  "name": "Cool down the ship by opening doors",
+  "scenarios": [
+    "habitable_room_too_warm",
+    "habitable_room_too_cold_with_opened_door",
+    "ice_floe_room_really_cold",
+    "room_temperature_not_available"
+  ]
+}
