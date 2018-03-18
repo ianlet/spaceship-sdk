@@ -1,0 +1,5 @@
+{
+  "name": "Both away team must run",
+  "events": ["away_team_01_moved","away_team_02_moved", "nra_with_automatic_weapon_detected"],
+  "results": ["away_team_moved_east_1_km", "away_team_02_moved_north_east_1_km"]
+}
