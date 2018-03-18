@@ -67,6 +67,11 @@ public class SpaceshipService {
     return new Random().nextDouble(); // FIXME: Read predefined mean habitable temperature
   }
 
+  public SensorUnit roomTemperatureSensorUnit(int roomNumber) {
+    int i = new Random().nextInt(2);
+    return SensorUnit.values()[i]; // FIXME: Return the actual room temperature sensor unit
+  }
+
   public SpaceshipBlueprint readBlueprint() {
     return spaceshipBlueprint;
   }
