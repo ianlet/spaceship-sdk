@@ -10,7 +10,7 @@ import static org.csgames.spaceship.sdk.EventType.TEAM_STATUS_REPORTED;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class TeamPositioningServiceTest {
+public class AwayTeamLogServiceTest {
 
   private static final String AWAY_TEAM = "away-team-07";
   private static final TeamStatus AWAY_TEAM_STATUS = TeamStatus.MOVING;
@@ -18,19 +18,19 @@ public class TeamPositioningServiceTest {
   private Headquarters headquarters;
   private EventFactory eventFactory;
 
-  private TeamPositioningService teamPositioningService;
+  private AwayTeamLogService awayTeamLogService;
 
   @Before
   public void setUp() throws Exception {
     eventFactory = new EventFactory();
     headquarters = mock(Headquarters.class);
 
-    teamPositioningService = new TeamPositioningService(eventFactory, headquarters);
+    awayTeamLogService = new AwayTeamLogService(eventFactory, headquarters);
   }
 
   @Test
   public void itShouldRecordTheReportedStatus() {
-    teamPositioningService.reportStatus(AWAY_TEAM, AWAY_TEAM_STATUS);
+    awayTeamLogService.reportStatus(AWAY_TEAM, AWAY_TEAM_STATUS);
 
     Event reportedStatusEvent = eventFactory.create(TEAM_STATUS_REPORTED, AWAY_TEAM, AWAY_TEAM_STATUS.toString());
     verify(headquarters).recordEvent(reportedStatusEvent);

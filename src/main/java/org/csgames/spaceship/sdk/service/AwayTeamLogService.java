@@ -6,12 +6,12 @@ import org.csgames.spaceship.sdk.Headquarters;
 
 import static org.csgames.spaceship.sdk.EventType.TEAM_STATUS_REPORTED;
 
-public class TeamPositioningService {
+public class AwayTeamLogService {
 
   private final EventFactory eventFactory;
   private final Headquarters headquarters;
 
-  public TeamPositioningService(EventFactory eventFactory, Headquarters headquarters) {
+  public AwayTeamLogService(EventFactory eventFactory, Headquarters headquarters) {
     this.eventFactory = eventFactory;
     this.headquarters = headquarters;
   }
