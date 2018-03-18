@@ -1,5 +1,7 @@
 package org.csgames.spaceship.sdk;
 
+import java.util.Random;
+
 import static org.csgames.spaceship.sdk.EventType.DOOR_CLOSED;
 import static org.csgames.spaceship.sdk.EventType.DOOR_OPEN;
 import static org.csgames.spaceship.sdk.EventType.FISH_SENT;
@@ -31,6 +33,11 @@ public class SpaceshipService {
 
   public void closeDoor(String target, int doorNumber) {
     recordEvent(DOOR_CLOSED, target, doorNumber);
+  }
+
+  public SensorUnit roomTemperatureSensorUnit(int roomNumber) {
+    int i = new Random().nextInt(2);
+    return SensorUnit.values()[i]; // FIXME: Return the actual room temperature sensor unit
   }
 
   public SpaceshipBlueprint readBlueprint() {
