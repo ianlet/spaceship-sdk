@@ -1,6 +1,6 @@
 {
   "name": "Supply consumed",
   "type": "SUPPLY_CONSUMED",
-  "source": "team-01",
+  "source": "away-team-03",
   "payload": "14,55"
 }
