@@ -1,4 +1,5 @@
 {
+  "name": "Away Team 01 moved",
   "type": "LOCATION_CHANGED",
   "source": "away-team-01",
   "payload": "10.009944,50.264578"

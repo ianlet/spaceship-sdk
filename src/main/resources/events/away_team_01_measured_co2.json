@@ -1,4 +1,5 @@
 {
+  "name": "Away Team 01 measured CO2",
   "type": "DATA_MEASURED",
   "source": "C02",
   "payload": "32.022414,43.273174"

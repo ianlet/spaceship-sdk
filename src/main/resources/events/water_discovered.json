@@ -1,4 +1,5 @@
 {
+  "name": "Water discovered",
   "type": "POI_DISCOVERED",
   "source": "water",
   "payload": "10.014423,51.672300"

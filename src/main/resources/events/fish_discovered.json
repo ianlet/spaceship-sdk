@@ -1,4 +1,5 @@
 {
+  "name": "Fish discovered",
   "type": "POI_DISCOVERED",
   "source": "fish",
   "payload": "25.014423,33.672300"
