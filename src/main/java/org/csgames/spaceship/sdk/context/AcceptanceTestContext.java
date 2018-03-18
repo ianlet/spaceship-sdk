@@ -17,6 +17,7 @@ import org.csgames.spaceship.sdk.accept.result.UserStoryResultStoreMongo;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepositoryJsonFile;
 import org.csgames.spaceship.sdk.service.AwayTeamLogService;
+import org.csgames.spaceship.sdk.service.UniversalTranslatorService;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -63,6 +64,9 @@ public class AcceptanceTestContext implements Context {
 
     AwayTeamLogService awayTeamLogService = new AwayTeamLogService(eventFactory, headquarters);
     register(AwayTeamLogService.class, awayTeamLogService);
+
+    UniversalTranslatorService universalTranslatorService = new UniversalTranslatorService();
+    register(UniversalTranslatorService.class, universalTranslatorService);
 
     UserStoryRepository userStoryRepository = new UserStoryRepositoryJsonFile();
     register(UserStoryRepository.class, userStoryRepository);
