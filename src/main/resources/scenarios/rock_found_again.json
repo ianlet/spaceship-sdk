@@ -1,5 +1,0 @@
-{
-  "name": "A rock was found twice",
-  "events": ["rock_discovered"],
-  "results": ["nothing_happened"]
-}

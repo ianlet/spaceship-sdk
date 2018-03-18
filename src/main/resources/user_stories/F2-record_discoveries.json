@@ -1,0 +1,8 @@
+{
+  "name": "Record discoveries",
+  "scenarios": [
+    "water_found",
+    "rock_found",
+    "rock_found_twice"
+  ]
+}

@@ -1,8 +1,0 @@
-{
-  "name": "Water resource type should have been added to the registry",
-  "event": {
-    "type": "RESOURCE_TYPE_REGISTERED",
-    "target": "Class M Planet Registry",
-    "payload": "water"
-  }
-}
