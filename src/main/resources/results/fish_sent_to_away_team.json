@@ -1,8 +1,8 @@
 {
-  "name": "Fish should have been sent to target",
+  "name": "Fish should have been sent to away team 01",
   "event": {
     "type": "FISH_SENT",
     "target": "away-team-01",
-    "payload": "15"
+    "payload": "20"
   }
 }
