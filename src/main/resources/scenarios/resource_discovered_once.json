@@ -1,5 +1,5 @@
 {
-  "name": "A rock was discovered",
+  "name": "A rock was discovered once",
   "events": [
     "rock_discovered"
   ],

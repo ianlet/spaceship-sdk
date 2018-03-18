@@ -1,7 +1,8 @@
 {
   "name": "Record other Telemetry data",
   "scenarios": [
-    "c02_reading",
-    "c02_reading_twice"
+    "data_measured_once",
+    "data_measured_twice_by_same_team",
+    "data_measured_twice_by_different_teams"
   ]
 }
