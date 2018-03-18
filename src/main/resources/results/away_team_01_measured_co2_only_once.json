@@ -1,0 +1,8 @@
+{
+  "name": "Away Team 01 measured CO2 only once",
+  "event": {
+    "type": "DATA_MEASURED",
+    "target": "away-team-01",
+    "payload": "CO2"
+  }
+}
