@@ -1,0 +1,8 @@
+{
+  "name": "Away Team 01 moved east 1 km",
+  "event": {
+    "type": "MOVED_TO",
+    "target": "away-team-01",
+    "payload": "EAST,1000"
+  }
+}
