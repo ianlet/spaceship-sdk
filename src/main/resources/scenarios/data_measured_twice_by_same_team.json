@@ -1,0 +1,10 @@
+{
+  "name": "Away Team 01 measured CO2 twice by same team",
+  "events": [
+    "away_team_01_measured_co2",
+    "away_team_01_measured_co2"
+  ],
+  "results": [
+    "co2_measured_by_away_team_01_reported"
+  ]
+}

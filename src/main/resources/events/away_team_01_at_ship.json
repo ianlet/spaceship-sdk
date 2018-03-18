@@ -1,0 +1,6 @@
+{
+  "name": "Away Team 01 at ship",
+  "type": "LOCATION_CHANGED",
+  "source": "away-team-01",
+  "payload": "0.0,0.0"
+}

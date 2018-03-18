@@ -1,0 +1,6 @@
+{
+  "name": "Supply a starving team",
+  "scenarios": [
+    "away_team_starving"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "A rock was discovered once",
+  "events": [
+    "rock_discovered"
+  ],
+  "results": [
+    "rock_resource_registered"
+  ]
+}

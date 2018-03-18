@@ -1,0 +1,8 @@
+{
+  "name": "CO2 Measured by Away Team 04 reported",
+  "event": {
+    "type": "MEASURED_DATA_REPORTED",
+    "target": "away-team-04",
+    "payload": "CO2"
+  }
+}

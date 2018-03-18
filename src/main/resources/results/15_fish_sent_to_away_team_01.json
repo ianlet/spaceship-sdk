@@ -1,0 +1,8 @@
+{
+  "name": "15 fish should have been sent to Away Team 01",
+  "event": {
+    "type": "FISH_SENT",
+    "target": "away-team-01",
+    "payload": "15"
+  }
+}

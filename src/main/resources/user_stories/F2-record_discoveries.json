@@ -1,0 +1,7 @@
+{
+  "name": "Record discoveries",
+  "scenarios": [
+    "resource_discovered_once",
+    "resource_discovered_twice"
+  ]
+}

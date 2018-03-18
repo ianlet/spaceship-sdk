@@ -1,0 +1,8 @@
+{
+  "name": "Proactive supply chain",
+  "scenarios": [
+    "water_supply_too_low",
+    "fish_count_too_low",
+    "enough_supply"
+  ]
+}

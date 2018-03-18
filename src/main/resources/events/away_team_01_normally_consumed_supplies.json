@@ -1,0 +1,6 @@
+{
+  "name": "Away Team 01 normally consumed supplies",
+  "type": "SUPPLY_CONSUMED",
+  "source": "away-team-01",
+  "payload": "14,55"
+}

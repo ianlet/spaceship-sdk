@@ -1,0 +1,8 @@
+{
+  "name": "Away Team 01 status changed to moving",
+  "event": {
+    "type": "TEAM_STATUS_REPORTED",
+    "target": "away-team-01",
+    "payload": "MOVING"
+  }
+}
