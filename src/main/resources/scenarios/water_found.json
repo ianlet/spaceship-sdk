@@ -1,7 +1,0 @@
-{
-  "name": "Water was found",
-  "events": ["water_discovered"],
-  "results": [
-    "water_resource_registered"
-  ]
-}

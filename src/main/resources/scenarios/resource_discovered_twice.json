@@ -1,10 +1,10 @@
 {
-  "name": "A rock was found twice",
+  "name": "A rock was discovered twice",
   "events": [
     "rock_discovered",
     "rock_discovered"
   ],
   "results": [
-    "rock_registered_once"
+    "rock_resource_registered"
   ]
 }

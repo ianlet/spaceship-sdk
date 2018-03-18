@@ -1,5 +1,5 @@
 {
-  "name": "Water resource should have been added to the registry",
+  "name": "Rock resource added to the Class M Planet Registry",
   "event": {
     "type": "RESOURCE_REGISTERED",
     "target": "PLANET_REGISTRY_CLASS_M",

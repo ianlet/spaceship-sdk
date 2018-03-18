@@ -1,8 +1,0 @@
-{
-  "name": "Water resource should have been registered",
-  "event": {
-    "type": "RESOURCE_REGISTERED",
-    "target": "PLANET_REGISTRY_CLASS_M",
-    "payload": "water"
-  }
-}

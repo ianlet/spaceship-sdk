@@ -1,8 +1,0 @@
-{
-  "name": "Water resource should have been added to the registry only once",
-  "event": {
-    "type": "RESOURCE_REGISTERED",
-    "target": "PLANET_REGISTRY_CLASS_M",
-    "payload": "rock"
-  }
-}
