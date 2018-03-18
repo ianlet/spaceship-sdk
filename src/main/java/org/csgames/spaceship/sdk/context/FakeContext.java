@@ -14,6 +14,7 @@ import org.csgames.spaceship.sdk.accept.result.UserStoryResultStoreFake;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepositoryFake;
 import org.csgames.spaceship.sdk.service.AwayTeamLogService;
+import org.csgames.spaceship.sdk.service.UniversalTranslatorService;
 
 import java.time.Clock;
 
@@ -52,6 +53,9 @@ public class FakeContext implements Context {
 
     AwayTeamLogService awayTeamLogService = new AwayTeamLogService(eventFactory, headquarters);
     register(AwayTeamLogService.class, awayTeamLogService);
+
+    UniversalTranslatorService universalTranslatorService = new UniversalTranslatorService();
+    register(UniversalTranslatorService.class, universalTranslatorService);
 
     UserStoryRepository userStoryRepository = new UserStoryRepositoryFake();
     register(UserStoryRepository.class, userStoryRepository);
