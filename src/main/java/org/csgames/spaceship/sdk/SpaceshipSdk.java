@@ -46,7 +46,7 @@ public class SpaceshipSdk {
     return locate(CommunicationService.class);
   }
 
-  public AwayTeamLogService getTeamPositioningService() {
+  public AwayTeamLogService getAwayTeamLogService() {
     return locate(AwayTeamLogService.class);
   }
 
