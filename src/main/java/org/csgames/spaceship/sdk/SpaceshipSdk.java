@@ -45,10 +45,6 @@ public class SpaceshipSdk {
     return locate(CommunicationService.class);
   }
 
-  public TemperatureRegulationService getTemperatureRegulationService() {
-    return locate(TemperatureRegulationService.class);
-  }
-
   public AwayTeamLogService getTeamPositioningService() {
     return locate(AwayTeamLogService.class);
   }

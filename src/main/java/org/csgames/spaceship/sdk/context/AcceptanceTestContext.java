@@ -10,7 +10,6 @@ import org.csgames.spaceship.sdk.HeadquartersMongo;
 import org.csgames.spaceship.sdk.LocationService;
 import org.csgames.spaceship.sdk.SpaceshipBlueprint;
 import org.csgames.spaceship.sdk.SpaceshipService;
-import org.csgames.spaceship.sdk.TemperatureRegulationService;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultStoreMongo;
@@ -51,9 +50,6 @@ public class AcceptanceTestContext implements Context {
 
     LocationService locationService = new LocationService();
     register(LocationService.class, locationService);
-
-    TemperatureRegulationService temperatureRegulationService = new TemperatureRegulationService(headquarters, eventFactory);
-    register(TemperatureRegulationService.class, temperatureRegulationService);
 
     SpaceshipBlueprint spaceshipBlueprint = new SpaceshipBlueprint();
     register(SpaceshipBlueprint.class, spaceshipBlueprint);
