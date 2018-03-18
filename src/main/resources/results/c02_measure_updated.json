@@ -1,8 +1,0 @@
-{
-  "name": "C02 level updated",
-  "event": {
-    "type": "DATA_MEASURED",
-    "target": "C02",
-    "payload": "35.99"
-  }
-}

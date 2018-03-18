@@ -1,0 +1,7 @@
+{
+  "name": "Record other Telemetry data",
+  "scenarios": [
+    "c02_reading",
+    "c02_reading_twice"
+  ]
+}
