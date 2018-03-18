@@ -10,13 +10,13 @@ import org.csgames.spaceship.sdk.HeadquartersMongo;
 import org.csgames.spaceship.sdk.LocationService;
 import org.csgames.spaceship.sdk.SpaceshipBlueprint;
 import org.csgames.spaceship.sdk.SpaceshipService;
-import org.csgames.spaceship.sdk.TemperatureRegulationService;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultStoreMongo;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepositoryJsonFile;
 import org.csgames.spaceship.sdk.service.AwayTeamLogService;
+import org.csgames.spaceship.sdk.service.PlanetResourceService;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -52,9 +52,6 @@ public class AcceptanceTestContext implements Context {
     LocationService locationService = new LocationService();
     register(LocationService.class, locationService);
 
-    TemperatureRegulationService temperatureRegulationService = new TemperatureRegulationService(headquarters, eventFactory);
-    register(TemperatureRegulationService.class, temperatureRegulationService);
-
     SpaceshipBlueprint spaceshipBlueprint = new SpaceshipBlueprint();
     register(SpaceshipBlueprint.class, spaceshipBlueprint);
 
@@ -63,6 +60,9 @@ public class AcceptanceTestContext implements Context {
 
     AwayTeamLogService awayTeamLogService = new AwayTeamLogService(eventFactory, headquarters);
     register(AwayTeamLogService.class, awayTeamLogService);
+
+    PlanetResourceService planetResourceService = new PlanetResourceService(eventFactory, headquarters);
+    register(PlanetResourceService.class, planetResourceService);
 
     UserStoryRepository userStoryRepository = new UserStoryRepositoryJsonFile();
     register(UserStoryRepository.class, userStoryRepository);
