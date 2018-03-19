@@ -25,9 +25,9 @@ public class SpaceshipServiceTest {
     theSpaceshipBlueprint = mock(SpaceshipBlueprint.class);
     headquarters = mock(Headquarters.class);
     eventFactory = new EventFactory();
-    RoomTemperatureReader roomTemperatureReader = mock(RoomTemperatureReader.class);
+    TemperatureReader temperatureReader = mock(TemperatureReader.class);
 
-    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint, eventFactory, roomTemperatureReader);
+    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint, eventFactory, temperatureReader);
   }
 
   @Test

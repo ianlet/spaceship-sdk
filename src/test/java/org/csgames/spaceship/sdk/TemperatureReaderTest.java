@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class RoomTemperatureReaderTest {
+public class TemperatureReaderTest {
 
   private static final int ROOM_01 = 1;
   private static final int ROOM_02 = 2;
@@ -17,45 +17,45 @@ public class RoomTemperatureReaderTest {
   private static final double MINUS_FIFTEEN_CELSIUS_DEGREES = -15d;
   private static final double MINUS_ONE_HUNDRED_CELSIUS_DEGREES = -100d;
 
-  private RoomTemperatureReader roomTemperatureReader;
+  private TemperatureReader temperatureReader;
 
   @Before
   public void setUp() throws Exception {
-    roomTemperatureReader = new RoomTemperatureReader();
+    temperatureReader = new TemperatureReader();
   }
 
   @Test
   public void itShouldReadTemperatureOfZeroCelsiusDegrees_givenRoom01TemperatureReadForFirstTime() throws Throwable {
-    double roomTemperature = roomTemperatureReader.readRoomTemperature(ROOM_01);
+    double roomTemperature = temperatureReader.readRoomTemperature(ROOM_01);
 
     assertThat(roomTemperature).isWithin(0).of(ZERO_CELSIUS_DEGREES);
   }
 
   @Test
   public void itShouldReadTemperatureOfMinusFiftyCelsiusDegrees_givenRoom01TemperatureReadForSecondTime() throws Throwable {
-    roomTemperatureReader.readRoomTemperature(ROOM_01);
+    temperatureReader.readRoomTemperature(ROOM_01);
 
-    double roomTemperature = roomTemperatureReader.readRoomTemperature(ROOM_01);
+    double roomTemperature = temperatureReader.readRoomTemperature(ROOM_01);
 
     assertThat(roomTemperature).isWithin(0).of(MINUS_FIFTY_CELSIUS_DEGREES);
   }
 
   @Test
   public void itShouldReadTemperatureOfMinusFifteenCelsiusDegrees_givenRoom02TemperatureRead() throws Throwable {
-    double roomTemperature = roomTemperatureReader.readRoomTemperature(ROOM_02);
+    double roomTemperature = temperatureReader.readRoomTemperature(ROOM_02);
 
     assertThat(roomTemperature).isWithin(0).of(MINUS_FIFTEEN_CELSIUS_DEGREES);
   }
 
   @Test
   public void itShouldReadTemperatureOfMinusOneHundredCelsiusDegrees_givenRoom03TemperatureRead() throws Throwable {
-    double roomTemperature = roomTemperatureReader.readRoomTemperature(ROOM_03);
+    double roomTemperature = temperatureReader.readRoomTemperature(ROOM_03);
 
     assertThat(roomTemperature).isWithin(0).of(MINUS_ONE_HUNDRED_CELSIUS_DEGREES);
   }
 
   @Test(expected = TemperatureSensorNotWorkingException.class)
   public void itShouldThrowTemperatureSensorNotWorking_givenRoom04TemperatureRead() throws Throwable {
-    roomTemperatureReader.readRoomTemperature(ROOM_04);
+    temperatureReader.readRoomTemperature(ROOM_04);
   }
 }

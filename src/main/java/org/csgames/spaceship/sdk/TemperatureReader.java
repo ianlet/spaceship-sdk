@@ -1,6 +1,6 @@
 package org.csgames.spaceship.sdk;
 
-public class RoomTemperatureReader {
+public class TemperatureReader {
 
   private int[] temperatureReadCount = new int[4];
 
@@ -25,5 +25,9 @@ public class RoomTemperatureReader {
       default:
         throw new UnknownRoomException(roomNumber);
     }
+  }
+
+  public double readMeanHabitableTemperature() {
+    return -7.5d;
   }
 }

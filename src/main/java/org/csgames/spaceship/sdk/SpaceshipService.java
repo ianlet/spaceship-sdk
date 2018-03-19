@@ -16,13 +16,13 @@ public class SpaceshipService {
   private final Headquarters headquarters;
   private final SpaceshipBlueprint spaceshipBlueprint;
   private final EventFactory eventFactory;
-  private final RoomTemperatureReader roomTemperatureReader;
+  private final TemperatureReader temperatureReader;
 
-  public SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory, RoomTemperatureReader roomTemperatureReader) {
+  public SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory, TemperatureReader temperatureReader) {
     this.headquarters = headquarters;
     this.spaceshipBlueprint = spaceshipBlueprint;
     this.eventFactory = eventFactory;
-    this.roomTemperatureReader = roomTemperatureReader;
+    this.temperatureReader = temperatureReader;
   }
 
   public void sendFishTo(String target, int fishCount) {
@@ -58,11 +58,11 @@ public class SpaceshipService {
   }
 
   public double readRoomTemperature(int roomNumber) throws TemperatureSensorNotWorkingException {
-    return roomTemperatureReader.readRoomTemperature(roomNumber);
+    return temperatureReader.readRoomTemperature(roomNumber);
   }
 
   public double readMeanHabitableTemperature() {
-    return -7.5d;
+    return temperatureReader.readMeanHabitableTemperature();
   }
 
   public SensorUnit roomTemperatureSensorUnit(int roomNumber) {
