@@ -50,14 +50,14 @@ public class UserStoryRepositoryJsonFile implements UserStoryRepository {
   }
 
   private List<Path> listUserStoryPaths() throws URISyntaxException, IOException {
-    URI uri = getClass().getResource(USER_STORIES_DIR).toURI();
-    Path myPath = getUserStoriesPath(uri);
-    return Files.walk(myPath, 1)
+    Path userStoryDir = getUserStoryDir();
+    return Files.walk(userStoryDir, 1)
       .filter(path -> isRegularFile(path))
       .collect(toList());
   }
 
-  private Path getUserStoriesPath(URI uri) throws IOException {
+  private Path getUserStoryDir() throws IOException, URISyntaxException {
+    URI uri = getClass().getResource(USER_STORIES_DIR).toURI();
     if (isJar(uri)) {
       FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
       return fileSystem.getPath(USER_STORIES_DIR);
