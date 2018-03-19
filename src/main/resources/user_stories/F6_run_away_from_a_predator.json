@@ -1,0 +1,8 @@
+{
+  "name": "Run away from a predator",
+  "scenarios": [
+    "away_team_must_run",
+    "away_team_is_safe",
+    "both_teams_must_run"
+  ]
+}
