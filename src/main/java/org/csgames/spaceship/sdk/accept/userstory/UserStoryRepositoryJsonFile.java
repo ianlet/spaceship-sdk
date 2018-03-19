@@ -3,10 +3,10 @@ package org.csgames.spaceship.sdk.accept.userstory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.FileSystem;
@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import static java.nio.file.Files.isRegularFile;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 
@@ -38,10 +39,9 @@ public class UserStoryRepositoryJsonFile implements UserStoryRepository {
     try {
       List<Path> userStoryPaths = listUserStoryPaths();
       return userStoryPaths.stream()
-        .map(Path::toFile)
-        .filter(File::isFile)
-        .map(this::toFileReader)
+        .map(this::toInputStream)
         .filter(Objects::nonNull)
+        .map(this::toReader)
         .map(this::toUserStory)
         .collect(toList());
     } catch (IOException | URISyntaxException e) {
@@ -51,25 +51,38 @@ public class UserStoryRepositoryJsonFile implements UserStoryRepository {
 
   private List<Path> listUserStoryPaths() throws URISyntaxException, IOException {
     URI uri = getClass().getResource(USER_STORIES_DIR).toURI();
-    Path myPath;
-    if (uri.getScheme().equals("jar")) {
-      FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
-      myPath = fileSystem.getPath(USER_STORIES_DIR);
-    } else {
-      myPath = Paths.get(uri);
-    }
-    return Files.walk(myPath, 1).collect(toList());
+    Path myPath = getUserStoriesPath(uri);
+    return Files.walk(myPath, 1)
+      .filter(path -> isRegularFile(path))
+      .collect(toList());
   }
 
-  private FileReader toFileReader(File file) {
+  private Path getUserStoriesPath(URI uri) throws IOException {
+    if (isJar(uri)) {
+      FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
+      return fileSystem.getPath(USER_STORIES_DIR);
+    } else {
+      return Paths.get(uri);
+    }
+  }
+
+  private boolean isJar(URI uri) {
+    return uri.getScheme().equals("jar");
+  }
+
+  private InputStream toInputStream(Path path) {
     try {
-      return new FileReader(file);
-    } catch (FileNotFoundException e) {
+      return Files.newInputStream(path);
+    } catch (IOException e) {
       return null;
     }
   }
 
-  private UserStory toUserStory(FileReader reader) {
+  private InputStreamReader toReader(InputStream inputStream) {
+    return new InputStreamReader(inputStream);
+  }
+
+  private UserStory toUserStory(Reader reader) {
     return gson.fromJson(reader, UserStory.class);
   }
 }
