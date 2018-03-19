@@ -25,7 +25,9 @@ public class SpaceshipServiceTest {
     theSpaceshipBlueprint = mock(SpaceshipBlueprint.class);
     headquarters = mock(Headquarters.class);
     eventFactory = new EventFactory();
-    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint, eventFactory);
+    TemperatureReader temperatureReader = mock(TemperatureReader.class);
+
+    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint, eventFactory, temperatureReader);
   }
 
   @Test
@@ -82,20 +84,6 @@ public class SpaceshipServiceTest {
     spaceshipService.closeAirConditioning(THE_ROOM_NUMBER);
 
     verifyEventRecorded(EventType.AIR_CONDITIONING_CLOSED, String.valueOf(THE_ROOM_NUMBER));
-  }
-
-  @Test
-  public void itShouldRecordThatTheRoomTemperatureWasRead() {
-    spaceshipService.readRoomTemperature(THE_ROOM_NUMBER);
-
-    verifyEventRecorded(EventType.ROOM_TEMPERATURE_READ, String.valueOf(THE_ROOM_NUMBER));
-  }
-
-  @Test
-  public void itShouldRecordThatTheMeanHabitableTemperatureWasRead() {
-    spaceshipService.readMeanHabitableTemperature(THE_ROOM_NUMBER);
-
-    verifyEventRecorded(EventType.MEAN_HABITABLE_TEMPERATURE_READ, String.valueOf(THE_ROOM_NUMBER));
   }
 
   @Test

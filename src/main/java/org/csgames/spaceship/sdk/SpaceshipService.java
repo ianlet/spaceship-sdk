@@ -7,8 +7,6 @@ import static org.csgames.spaceship.sdk.EventType.AIR_CONDITIONING_OPEN;
 import static org.csgames.spaceship.sdk.EventType.DOOR_CLOSED;
 import static org.csgames.spaceship.sdk.EventType.DOOR_OPEN;
 import static org.csgames.spaceship.sdk.EventType.FISH_SENT;
-import static org.csgames.spaceship.sdk.EventType.MEAN_HABITABLE_TEMPERATURE_READ;
-import static org.csgames.spaceship.sdk.EventType.ROOM_TEMPERATURE_READ;
 import static org.csgames.spaceship.sdk.EventType.VENT_CLOSED;
 import static org.csgames.spaceship.sdk.EventType.VENT_OPEN;
 import static org.csgames.spaceship.sdk.EventType.WATER_SENT;
@@ -18,11 +16,13 @@ public class SpaceshipService {
   private final Headquarters headquarters;
   private final SpaceshipBlueprint spaceshipBlueprint;
   private final EventFactory eventFactory;
+  private final TemperatureReader temperatureReader;
 
-  public SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory) {
+  public SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory, TemperatureReader temperatureReader) {
     this.headquarters = headquarters;
     this.spaceshipBlueprint = spaceshipBlueprint;
     this.eventFactory = eventFactory;
+    this.temperatureReader = temperatureReader;
   }
 
   public void sendFishTo(String target, int fishCount) {
@@ -57,14 +57,12 @@ public class SpaceshipService {
     recordEvent(AIR_CONDITIONING_CLOSED, roomNumber);
   }
 
-  public double readRoomTemperature(int roomNumber) {
-    recordEvent(ROOM_TEMPERATURE_READ, roomNumber);
-    return new Random().nextDouble(); // FIXME: Read predefined room temperature
+  public double readRoomTemperature(int roomNumber) throws TemperatureSensorNotWorkingException {
+    return temperatureReader.readRoomTemperature(roomNumber);
   }
 
-  public double readMeanHabitableTemperature(int roomNumber) {
-    recordEvent(MEAN_HABITABLE_TEMPERATURE_READ, roomNumber);
-    return new Random().nextDouble(); // FIXME: Read predefined mean habitable temperature
+  public double readMeanHabitableTemperature() {
+    return temperatureReader.readMeanHabitableTemperature();
   }
 
   public SensorUnit roomTemperatureSensorUnit(int roomNumber) {

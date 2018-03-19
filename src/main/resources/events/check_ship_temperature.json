@@ -1,5 +1,5 @@
 {
-  "name": "Room 01 is getting warm",
+  "name": "Check the ship's temperature",
   "type": "CHECK_SHIP_TEMPERATURE",
   "source": "",
   "payload": ""
