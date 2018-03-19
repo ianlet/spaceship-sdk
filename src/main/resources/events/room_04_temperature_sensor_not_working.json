@@ -1,6 +1,6 @@
 {
   "name": "Room 04 temperature sensor is not working",
-  "type": "SET_ROOM_SENSOR_OFF",
-  "source": "4",
+  "type": "",
+  "source": "",
   "payload": ""
 }

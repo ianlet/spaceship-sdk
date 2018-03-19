@@ -1,6 +1,6 @@
 {
   "name": "Floe Room 03 at minus 100 celsius",
-  "type": "SET_ROOM_TEMPERATURE",
-  "source": "3",
-  "payload": "-100C"
+  "type": "",
+  "source": "",
+  "payload": ""
 }

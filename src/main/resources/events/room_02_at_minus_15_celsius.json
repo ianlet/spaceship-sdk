@@ -1,6 +1,6 @@
 {
   "name": "Room 02 at minus 50 celsius",
-  "type": "SET_ROOM_TEMPERATURE",
-  "source": "2",
-  "payload": "-15C"
+  "type": "",
+  "source": "",
+  "payload": ""
 }

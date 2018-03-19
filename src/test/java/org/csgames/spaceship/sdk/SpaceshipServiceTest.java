@@ -15,6 +15,16 @@ public class SpaceshipServiceTest {
   private static final int SOME_FISH = 19;
   private static final double SOME_WATER_IN_LITER = 27.2;
 
+  private static final int ROOM_01 = 1;
+  private static final int ROOM_02 = 2;
+  private static final int ROOM_03 = 3;
+  private static final int ROOM_04 = 4;
+
+  private static final double ZERO_CELSIUS_DEGREES = 0d;
+  private static final double MINUS_FIFTY_CELSIUS_DEGREES = -50d;
+  private static final double MINUS_FIFTEEN_CELSIUS_DEGREES = -15d;
+  private static final double MINUS_ONE_HUNDRED_CELSIUS_DEGREES = -100d;
+
   private Headquarters headquarters;
   private SpaceshipService spaceshipService;
   private SpaceshipBlueprint theSpaceshipBlueprint;
@@ -85,17 +95,38 @@ public class SpaceshipServiceTest {
   }
 
   @Test
-  public void itShouldRecordThatTheRoomTemperatureWasRead() {
-    spaceshipService.readRoomTemperature(THE_ROOM_NUMBER);
+  public void itShouldReadTemperatureOfZeroCelsiusDegrees_givenRoom01TemperatureReadForFirstTime() throws Throwable {
+    double roomTemperature = spaceshipService.readRoomTemperature(ROOM_01);
 
-    verifyEventRecorded(EventType.ROOM_TEMPERATURE_READ, String.valueOf(THE_ROOM_NUMBER));
+    assertThat(roomTemperature).isWithin(0).of(ZERO_CELSIUS_DEGREES);
   }
 
   @Test
-  public void itShouldRecordThatTheMeanHabitableTemperatureWasRead() {
-    spaceshipService.readMeanHabitableTemperature(THE_ROOM_NUMBER);
+  public void itShouldReadTemperatureOfMinusFiftyCelsiusDegrees_givenRoom01TemperatureReadForSecondTime() throws Throwable {
+    spaceshipService.readRoomTemperature(ROOM_01);
 
-    verifyEventRecorded(EventType.MEAN_HABITABLE_TEMPERATURE_READ, String.valueOf(THE_ROOM_NUMBER));
+    double roomTemperature = spaceshipService.readRoomTemperature(ROOM_01);
+
+    assertThat(roomTemperature).isWithin(0).of(MINUS_FIFTY_CELSIUS_DEGREES);
+  }
+
+  @Test
+  public void itShouldReadTemperatureOfMinusFifteenCelsiusDegrees_givenRoom02TemperatureRead() throws Throwable {
+    double roomTemperature = spaceshipService.readRoomTemperature(ROOM_02);
+
+    assertThat(roomTemperature).isWithin(0).of(MINUS_FIFTEEN_CELSIUS_DEGREES);
+  }
+
+  @Test
+  public void itShouldReadTemperatureOfMinusOneHundredCelsiusDegrees_givenRoom03TemperatureRead() throws Throwable {
+    double roomTemperature = spaceshipService.readRoomTemperature(ROOM_03);
+
+    assertThat(roomTemperature).isWithin(0).of(MINUS_ONE_HUNDRED_CELSIUS_DEGREES);
+  }
+
+  @Test(expected = TemperatureSensorNotWorkingException.class)
+  public void itShouldThrowTemperatureSensorNotWorking_givenRoom04TemperatureRead() throws Throwable {
+    spaceshipService.readRoomTemperature(ROOM_04);
   }
 
   @Test

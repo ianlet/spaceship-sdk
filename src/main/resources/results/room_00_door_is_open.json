@@ -1,8 +1,8 @@
 {
-  "name": "Room 02 door is closed",
+  "name": "Room 00 door is opened",
   "event": {
     "type": "DOOR_OPEN",
-    "target": "2",
+    "target": "0",
     "payload": ""
   }
 }

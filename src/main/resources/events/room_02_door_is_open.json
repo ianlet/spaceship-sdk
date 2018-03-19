@@ -1,6 +1,0 @@
-{
-  "name": "Room 02 door is open",
-  "type": "OPEN_DOOR",
-  "source": "2",
-  "payload": ""
-}

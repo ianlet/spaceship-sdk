@@ -1,0 +1,11 @@
+{
+  "name": "Temperature sensor of room 04 is not working",
+  "events": [
+    "room_04_temperature_sensor_not_working",
+    "habitable_mean_temperature_at_minus_7_5_celsius",
+    "check_ship_temperature"
+  ],
+  "results": [
+    "room_04_door_is_open"
+  ]
+}
