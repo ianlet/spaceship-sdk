@@ -1,0 +1,8 @@
+{
+  "name": "Room 01 vent is closed",
+  "event": {
+    "type": "VENT_CLOSED",
+    "target": "1",
+    "payload": ""
+  }
+}
