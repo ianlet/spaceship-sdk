@@ -5,6 +5,7 @@ import org.csgames.spaceship.sdk.EventFactory;
 import org.csgames.spaceship.sdk.Headquarters;
 import org.csgames.spaceship.sdk.HeadquartersFake;
 import org.csgames.spaceship.sdk.LocationService;
+import org.csgames.spaceship.sdk.RoomTemperatureReader;
 import org.csgames.spaceship.sdk.SpaceshipBlueprint;
 import org.csgames.spaceship.sdk.SpaceshipService;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
@@ -44,7 +45,10 @@ public class FakeContext implements Context {
     SpaceshipBlueprint spaceshipBlueprint = new SpaceshipBlueprint();
     register(SpaceshipBlueprint.class, spaceshipBlueprint);
 
-    SpaceshipService spaceshipService = new SpaceshipService(headquarters, spaceshipBlueprint, eventFactory);
+    RoomTemperatureReader roomTemperatureReader = new RoomTemperatureReader();
+    register(RoomTemperatureReader.class, roomTemperatureReader);
+
+    SpaceshipService spaceshipService = new SpaceshipService(headquarters, spaceshipBlueprint, eventFactory, roomTemperatureReader);
     register(SpaceshipService.class, spaceshipService);
 
     AwayTeamLogService awayTeamLogService = new AwayTeamLogService(eventFactory, headquarters);
