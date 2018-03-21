@@ -5,5 +5,8 @@
     "habitable_room_too_cold_with_open_door",
     "ice_floe_room_really_cold",
     "temperature_sensor_not_working"
-  ]
+  ],
+  "points": 3,
+  "penalties": 3,
+  "deaths" : 0
 }

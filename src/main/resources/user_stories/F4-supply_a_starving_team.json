@@ -2,5 +2,8 @@
   "name": "Supply a starving team",
   "scenarios": [
     "away_team_starving"
-  ]
+  ],
+  "points": 6,
+  "penalties": 6,
+  "deaths" : 0
 }

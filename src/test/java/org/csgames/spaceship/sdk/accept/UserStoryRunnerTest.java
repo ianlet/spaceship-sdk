@@ -39,7 +39,7 @@ public class UserStoryRunnerTest {
   @Test
   public void itShouldAcceptEachScenario() {
     List<Scenario> scenarios = asList(firstScenario, secondScenario);
-    UserStory userStory = new UserStory("user story", scenarios);
+    UserStory userStory = new UserStory("user story", scenarios, 3,3,0);
 
     userStoryRunner.accept(userStory);
 
@@ -48,7 +48,7 @@ public class UserStoryRunnerTest {
 
   @Test(expected = UserStoryFailedException.class)
   public void itShouldFailTheUserStory_givenOneOfTheScenarioFailed() {
-    UserStory userStory = new UserStory("failure", asList(unsuccessfulScenario));
+    UserStory userStory = new UserStory("failure", asList(unsuccessfulScenario), 3,3,0);
 
     userStoryRunner.accept(userStory);
   }
@@ -56,7 +56,7 @@ public class UserStoryRunnerTest {
   @Test
   public void itShouldAcceptEachScenarioEvenIfOneOfThemFailed() {
     List<Scenario> scenarios = asList(firstScenario, unsuccessfulScenario, lastScenario);
-    UserStory userStory = new UserStory("failure", scenarios);
+    UserStory userStory = new UserStory("failure", scenarios, 3,3,0);
 
     try {
       userStoryRunner.accept(userStory);

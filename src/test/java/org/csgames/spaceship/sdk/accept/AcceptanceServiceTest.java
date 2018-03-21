@@ -23,8 +23,8 @@ public class AcceptanceServiceTest {
 
   private static final String TEAM_TOKEN = "team-01";
 
-  private final UserStory firstUserStory = new UserStory("do something", emptyList());
-  private final UserStory secondUserStory = new UserStory("do something else", emptyList());
+  private final UserStory firstUserStory = new UserStory("do something", emptyList(), 3,3,0);
+  private final UserStory secondUserStory = new UserStory("do something else", emptyList(),3,3,0);
 
   private UserStoryRepository userStoryRepository;
   private UserStoryRunner userStoryRunner;
@@ -81,13 +81,13 @@ public class AcceptanceServiceTest {
   }
 
   private UserStory givenSuccessfulUserStory() {
-    UserStory userStory = new UserStory("success", emptyList());
+    UserStory userStory = new UserStory("success", emptyList(),3,3,0);
     willReturn(asList(userStory)).given(userStoryRepository).findAll();
     return userStory;
   }
 
   private UserStory givenUnsuccessfulUserStory() {
-    UserStory userStory = new UserStory("failure", emptyList());
+    UserStory userStory = new UserStory("failure", emptyList(),3,3,0);
     willReturn(asList(userStory)).given(userStoryRepository).findAll();
     willThrow(UserStoryFailedException.class).given(userStoryRunner).accept(userStory);
     return userStory;
