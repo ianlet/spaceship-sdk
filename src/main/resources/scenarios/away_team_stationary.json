@@ -1,5 +1,10 @@
 {
-  "name": "Away Team 01 is stationary",
-  "events": ["away_team_01_at_ship", "away_team_01_at_ship"],
-  "results": ["away_team_01_is_stationary"]
+  "name": "Away Team 02 is stationary",
+  "events": [
+    "away_team_02_at_ship",
+    "away_team_02_at_ship"
+  ],
+  "results": [
+    "away_team_02_is_stationary"
+  ]
 }

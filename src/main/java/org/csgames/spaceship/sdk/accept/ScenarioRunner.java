@@ -36,8 +36,13 @@ public class ScenarioRunner {
   }
 
   private void sendEvent(InputEvent event) {
-    reporter.reportEventSent(event);
-    spaceshipApi.sendEvent(event);
+    try {
+      spaceshipApi.sendEvent(event);
+      reporter.reportEventSent(event);
+    } catch (EventNotSentException ignored) {
+      reporter.reportEventFailed(event);
+      throw new ScenarioFailedException();
+    }
   }
 
   private void ensureResultIsSatisfied(Result result) {

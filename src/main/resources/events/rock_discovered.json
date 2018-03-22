@@ -1,6 +1,6 @@
 {
   "name": "Rock discovered",
-  "type": "POI_DISCOVERED",
+  "type": "RESOURCE_DISCOVERED",
   "source": "rock",
   "payload": "34.014423,99.672300"
 }

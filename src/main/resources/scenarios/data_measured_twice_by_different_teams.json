@@ -1,11 +1,11 @@
 {
-  "name": "Away Team 01 measured CO2 twice by different teams",
+  "name": "CO2 measured twice by different Away Teams",
   "events": [
-    "away_team_01_measured_co2",
-    "away_team_04_measured_co2"
+    "away_team_05_measured_co2",
+    "away_team_07_measured_co2"
   ],
   "results": [
-    "co2_measured_by_away_team_01_reported",
-    "co2_measured_by_away_team_04_reported"
+    "co2_measured_by_away_team_05_reported",
+    "co2_measured_by_away_team_07_reported"
   ]
 }

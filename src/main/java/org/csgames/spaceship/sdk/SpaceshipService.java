@@ -29,7 +29,7 @@ public class SpaceshipService {
     recordEvent(FISH_SENT, target, fishCount);
   }
 
-  public void sendWaterTo(String target, double waterInLiter) {
+  public void sendWaterTo(String target, int waterInLiter) {
     recordEvent(WATER_SENT, target, waterInLiter);
   }
 
