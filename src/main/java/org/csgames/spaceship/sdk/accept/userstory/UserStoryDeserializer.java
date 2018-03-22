@@ -34,7 +34,7 @@ public class UserStoryDeserializer implements JsonDeserializer<UserStory> {
     List<Scenario> scenarios = getScenarios(userStoryJson);
     int points = getPoints(userStoryJson);
     int penalties = getPenalties(userStoryJson);
-    int deaths = getDeaths(userStoryJson);
+    double deaths = getDeaths(userStoryJson);
 
     return new UserStory(name, scenarios, points, penalties, deaths);
   }
@@ -51,8 +51,8 @@ public class UserStoryDeserializer implements JsonDeserializer<UserStory> {
     return userStory.get("penalties").getAsInt();
   }
 
-  private int getDeaths(JsonObject userStory) {
-    return userStory.get("deaths").getAsInt();
+  private double getDeaths(JsonObject userStory) {
+    return userStory.get("deaths").getAsDouble();
   }
 
   private List<Scenario> getScenarios(JsonObject json) {
