@@ -4,5 +4,8 @@
     "away_team_must_run",
     "away_team_is_safe",
     "both_teams_must_run"
-  ]
+  ],
+  "points": 6,
+  "penalties": 6,
+  "deaths" : 2
 }

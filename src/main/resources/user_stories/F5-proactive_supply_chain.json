@@ -4,5 +4,8 @@
     "water_supply_too_low",
     "fish_count_too_low",
     "enough_supply"
-  ]
+  ],
+  "points": 4,
+  "penalties": 4,
+  "deaths" : 0
 }

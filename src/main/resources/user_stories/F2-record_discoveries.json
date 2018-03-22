@@ -3,5 +3,8 @@
   "scenarios": [
     "resource_discovered_once",
     "resource_discovered_twice"
-  ]
+  ],
+  "points": 3,
+  "penalties": 3,
+  "deaths" : 0
 }

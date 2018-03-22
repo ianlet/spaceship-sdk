@@ -10,7 +10,7 @@ public class UserStoryResultFactory {
     this.clock = clock;
   }
 
-  public UserStoryResult create(UserStoryResultType type, String teamToken, String name) {
-    return new UserStoryResult(type, teamToken, name, clock.instant());
+  public UserStoryResult create(UserStoryResultType type, String teamToken, String name, int points, int penalties, double deaths) {
+    return new UserStoryResult(type, teamToken, name, points, penalties, deaths, clock.instant());
   }
 }

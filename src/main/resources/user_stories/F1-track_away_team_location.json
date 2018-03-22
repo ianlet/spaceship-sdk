@@ -3,5 +3,8 @@
   "scenarios": [
     "away_team_moving",
     "away_team_stationary"
-  ]
+  ],
+  "points": 3,
+  "penalties": 3,
+  "deaths" : 0
 }

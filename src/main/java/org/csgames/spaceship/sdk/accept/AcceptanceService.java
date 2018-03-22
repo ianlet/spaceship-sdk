@@ -47,7 +47,7 @@ public class AcceptanceService {
   }
 
   private void recordResult(UserStoryResultType eventType, UserStory userStory, String teamToken) {
-    UserStoryResult result = resultFactory.create(eventType, teamToken, userStory.name);
+    UserStoryResult result = resultFactory.create(eventType, teamToken, userStory.name, userStory.points, userStory.penalties, userStory.deaths);
     resultStore.store(result);
   }
 }
