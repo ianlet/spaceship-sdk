@@ -1,5 +1,5 @@
 {
-  "name": "Run away from a predator",
+  "name": "F06 - Run away from a predator",
   "scenarios": [
     "away_team_must_run",
     "away_team_is_safe",

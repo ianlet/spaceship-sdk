@@ -1,5 +1,5 @@
 {
-  "name": "Regulate temperature with the vent system",
+  "name": "F08 - Regulate temperature with the vent system",
   "scenarios": [
     "habitable_room_too_warm_with_vent",
     "habitable_room_too_cold_with_open_vent",

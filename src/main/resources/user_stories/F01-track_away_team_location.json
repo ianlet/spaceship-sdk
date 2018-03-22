@@ -1,5 +1,5 @@
 {
-  "name": "Track Away Team's location",
+  "name": "F01 - Track Away Team's location",
   "scenarios": [
     "away_team_moving",
     "away_team_stationary"

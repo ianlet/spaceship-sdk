@@ -1,5 +1,5 @@
 {
-  "name": "Cool down the ship by opening doors",
+  "name": "F07 - Cool down the ship by opening doors",
   "scenarios": [
     "habitable_room_too_warm",
     "habitable_room_too_cold_with_open_door",

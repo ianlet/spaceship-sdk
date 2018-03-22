@@ -1,5 +1,5 @@
 {
-  "name": "Record other Telemetry data",
+  "name": "F03 - Record other Telemetry data",
   "scenarios": [
     "data_measured_once",
     "data_measured_twice_by_same_team",
