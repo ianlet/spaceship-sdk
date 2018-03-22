@@ -1,5 +1,6 @@
 package org.csgames.spaceship.sdk;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.csgames.spaceship.sdk.EventType.AIR_CONDITIONING_CLOSED;
@@ -70,8 +71,9 @@ public class SpaceshipService {
     return SensorUnit.values()[i]; // FIXME: Return the actual room temperature sensor unit
   }
 
-  public SpaceshipBlueprint readBlueprint() {
-    return spaceshipBlueprint;
+  public List<Room> readBlueprint() {
+
+    return spaceshipBlueprint.roomList;
   }
 
   private void recordEvent(EventType eventType, String target, Object payload) {
