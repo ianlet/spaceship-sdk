@@ -6,7 +6,7 @@ public class SpaceshipBlueprint {
 
   public final List<Room> roomList;
 
-  SpaceshipBlueprint(List<Room> roomList) {
+  public SpaceshipBlueprint(List<Room> roomList) {
     this.roomList = roomList;
   }
 }

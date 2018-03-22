@@ -1,5 +1,6 @@
 package org.csgames.spaceship.sdk;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -71,9 +72,14 @@ public class SpaceshipService {
     return SensorUnit.values()[i]; // FIXME: Return the actual room temperature sensor unit
   }
 
-  public List<Room> readBlueprint() {
+  public List<String> readBlueprint() {
+    List<String> roomsAsString = new ArrayList<>();
 
-    return spaceshipBlueprint.roomList;
+    for (Room r: spaceshipBlueprint.roomList) {
+      roomsAsString.add(r.toString());
+    }
+
+    return roomsAsString;
   }
 
   private void recordEvent(EventType eventType, String target, Object payload) {

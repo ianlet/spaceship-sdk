@@ -1,13 +1,6 @@
 package org.csgames.spaceship.sdk.context;
 
-import org.csgames.spaceship.sdk.CommunicationService;
-import org.csgames.spaceship.sdk.EventFactory;
-import org.csgames.spaceship.sdk.Headquarters;
-import org.csgames.spaceship.sdk.HeadquartersFake;
-import org.csgames.spaceship.sdk.LocationService;
-import org.csgames.spaceship.sdk.SpaceshipBlueprint;
-import org.csgames.spaceship.sdk.SpaceshipService;
-import org.csgames.spaceship.sdk.TemperatureReader;
+import org.csgames.spaceship.sdk.*;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultStoreFake;
@@ -17,6 +10,7 @@ import org.csgames.spaceship.sdk.service.AwayTeamLogService;
 import org.csgames.spaceship.sdk.service.PlanetResourceService;
 
 import java.time.Clock;
+import java.util.ArrayList;
 
 import static org.csgames.spaceship.sdk.context.ServiceLocator.register;
 
@@ -42,7 +36,7 @@ public class FakeContext implements Context {
     LocationService locationService = new LocationService();
     register(LocationService.class, locationService);
 
-    SpaceshipBlueprint spaceshipBlueprint = new SpaceshipBlueprint();
+    SpaceshipBlueprint spaceshipBlueprint = new SpaceshipBlueprint(new ArrayList<Room>());
     register(SpaceshipBlueprint.class, spaceshipBlueprint);
 
     TemperatureReader temperatureReader = new TemperatureReader();
