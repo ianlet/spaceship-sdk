@@ -28,7 +28,7 @@ public class SpaceshipApiUnirest implements SpaceshipApi {
         .body(gson.toJson(event))
         .asJson();
     } catch (UnirestException e) {
-      e.printStackTrace();
+      throw new EventNotSentException();
     }
   }
 }

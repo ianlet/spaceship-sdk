@@ -14,6 +14,8 @@ public interface ScenarioReporter {
 
   void reportEventSent(InputEvent event);
 
+  void reportEventFailed(InputEvent event);
+
   void reportResultUnsatisfied(Result result);
 
   void reportResultSatisfied(Result result);

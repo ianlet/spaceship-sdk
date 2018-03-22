@@ -70,6 +70,11 @@ public class ConsoleReporter implements UserStoryReporter, ScenarioReporter {
   }
 
   @Override
+  public void reportEventFailed(InputEvent event) {
+    currentScenario.steps.get(event.name).status = "failure";
+  }
+
+  @Override
   public void reportResultUnsatisfied(Result result) {
     currentScenario.steps.get(result.name).status = "failure";
   }

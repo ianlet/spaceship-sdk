@@ -1,0 +1,6 @@
+{
+  "name": "Away Team 02 measured CO2 again",
+  "type": "DATA_MEASURED",
+  "source": "away-team-02",
+  "payload": "CO2=40.000ppm"
+}
