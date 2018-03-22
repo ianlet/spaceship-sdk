@@ -13,7 +13,7 @@ public class SpaceshipServiceTest {
   private static final int THE_ROOM_NUMBER = 21;
 
   private static final int SOME_FISH = 19;
-  private static final double SOME_WATER_IN_LITER = 27.2;
+  private static final int SOME_WATER_IN_LITER = 27;
 
   private Headquarters headquarters;
   private SpaceshipService spaceshipService;
