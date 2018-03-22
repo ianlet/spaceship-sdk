@@ -1,5 +1,5 @@
 {
-  "name": "Record discoveries",
+  "name": "F02 - Record discoveries",
   "scenarios": [
     "resource_discovered_once",
     "resource_discovered_twice"
