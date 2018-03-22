@@ -66,7 +66,7 @@ public class AcceptanceServiceTest {
 
     acceptanceService.acceptUserStories();
 
-    UserStoryResult userStorySucceeded = userStoryResultFactory.create(UserStoryResultType.SUCCEEDED, TEAM_TOKEN, userStory.name);
+    UserStoryResult userStorySucceeded = userStoryResultFactory.create(UserStoryResultType.SUCCEEDED, TEAM_TOKEN, userStory.name, userStory.points, userStory.penalties, userStory.deaths);
     verify(userStoryResultStore).store(userStorySucceeded);
   }
 
@@ -76,7 +76,7 @@ public class AcceptanceServiceTest {
 
     acceptanceService.acceptUserStories();
 
-    UserStoryResult userStoryFailed = userStoryResultFactory.create(UserStoryResultType.FAILED, TEAM_TOKEN, userStory.name);
+    UserStoryResult userStoryFailed = userStoryResultFactory.create(UserStoryResultType.FAILED, TEAM_TOKEN, userStory.name, userStory.points, userStory.penalties, userStory.deaths);
     verify(userStoryResultStore).store(userStoryFailed);
   }
 

@@ -13,12 +13,18 @@ public class UserStoryResultMongo {
   public String userStory;
   public String team;
   public UserStoryResultType result;
+  public final int points;
+  public final int penalties;
+  public final double deaths;
   public Instant timestamp;
 
-  public UserStoryResultMongo(String userStory, String team, UserStoryResultType result, Instant timestamp) {
+  public UserStoryResultMongo(String userStory, String team, UserStoryResultType result, int points, int penalties, double deaths, Instant timestamp) {
     this.userStory = userStory;
     this.team = team;
     this.result = result;
+    this.points = points;
+    this.penalties = penalties;
+    this.deaths = deaths;
     this.timestamp = timestamp;
   }
 }
