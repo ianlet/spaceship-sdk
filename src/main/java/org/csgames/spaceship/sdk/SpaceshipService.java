@@ -14,13 +14,13 @@ import static org.csgames.spaceship.sdk.EventType.WATER_SENT;
 public class SpaceshipService {
 
   private final Headquarters headquarters;
-  private final SpaceshipBlueprint spaceshipBlueprint;
+  private final SpaceshipBlueprintFactory spaceshipBlueprintFactory;
   private final EventFactory eventFactory;
   private final TemperatureReader temperatureReader;
 
-  public SpaceshipService(Headquarters headquarters, SpaceshipBlueprint spaceshipBlueprint, EventFactory eventFactory, TemperatureReader temperatureReader) {
+  public SpaceshipService(Headquarters headquarters, SpaceshipBlueprintFactory spaceshipBlueprintFactory, EventFactory eventFactory, TemperatureReader temperatureReader) {
     this.headquarters = headquarters;
-    this.spaceshipBlueprint = spaceshipBlueprint;
+    this.spaceshipBlueprintFactory = spaceshipBlueprintFactory;
     this.eventFactory = eventFactory;
     this.temperatureReader = temperatureReader;
   }
@@ -71,7 +71,7 @@ public class SpaceshipService {
   }
 
   public SpaceshipBlueprint readBlueprint() {
-    return spaceshipBlueprint;
+    return spaceshipBlueprintFactory.generate();
   }
 
   private void recordEvent(EventType eventType, String target, Object payload) {

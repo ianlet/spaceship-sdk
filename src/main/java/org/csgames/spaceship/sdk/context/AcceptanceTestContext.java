@@ -8,7 +8,7 @@ import org.csgames.spaceship.sdk.EventMongo;
 import org.csgames.spaceship.sdk.Headquarters;
 import org.csgames.spaceship.sdk.HeadquartersMongo;
 import org.csgames.spaceship.sdk.LocationService;
-import org.csgames.spaceship.sdk.SpaceshipBlueprint;
+import org.csgames.spaceship.sdk.SpaceshipBlueprintFactory;
 import org.csgames.spaceship.sdk.SpaceshipService;
 import org.csgames.spaceship.sdk.TemperatureReader;
 import org.csgames.spaceship.sdk.accept.result.UserStoryResultFactory;
@@ -53,13 +53,13 @@ public class AcceptanceTestContext implements Context {
     LocationService locationService = new LocationService();
     register(LocationService.class, locationService);
 
-    SpaceshipBlueprint spaceshipBlueprint = new SpaceshipBlueprint();
-    register(SpaceshipBlueprint.class, spaceshipBlueprint);
+    SpaceshipBlueprintFactory spaceshipBlueprintFactory = new SpaceshipBlueprintFactory();
+    register(SpaceshipBlueprintFactory.class, spaceshipBlueprintFactory);
 
     TemperatureReader temperatureReader = new TemperatureReader();
     register(TemperatureReader.class, temperatureReader);
 
-    SpaceshipService spaceshipService = new SpaceshipService(headquarters, spaceshipBlueprint, eventFactory, temperatureReader);
+    SpaceshipService spaceshipService = new SpaceshipService(headquarters, spaceshipBlueprintFactory, eventFactory, temperatureReader);
     register(SpaceshipService.class, spaceshipService);
 
     AwayTeamLogService awayTeamLogService = new AwayTeamLogService(eventFactory, headquarters);

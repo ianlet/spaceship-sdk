@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.BDDMockito.willReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -16,18 +17,19 @@ public class SpaceshipServiceTest {
   private static final int SOME_WATER_IN_LITER = 27;
 
   private Headquarters headquarters;
-  private SpaceshipService spaceshipService;
-  private SpaceshipBlueprint theSpaceshipBlueprint;
   private EventFactory eventFactory;
+  private SpaceshipBlueprintFactory spaceshipBlueprintFactory;
+
+  private SpaceshipService spaceshipService;
 
   @Before
   public void setUp() throws Exception {
-    theSpaceshipBlueprint = mock(SpaceshipBlueprint.class);
+    spaceshipBlueprintFactory = mock(SpaceshipBlueprintFactory.class);
     headquarters = mock(Headquarters.class);
     eventFactory = new EventFactory();
     TemperatureReader temperatureReader = mock(TemperatureReader.class);
 
-    spaceshipService = new SpaceshipService(headquarters, theSpaceshipBlueprint, eventFactory, temperatureReader);
+    spaceshipService = new SpaceshipService(headquarters, spaceshipBlueprintFactory, eventFactory, temperatureReader);
   }
 
   @Test
@@ -87,10 +89,13 @@ public class SpaceshipServiceTest {
   }
 
   @Test
-  public void itShouldReadTheSpaceshipBlueprint() {
+  public void itShouldReadSpaceshipBlueprint() {
+    SpaceshipBlueprint generatedBlueprint = mock(SpaceshipBlueprint.class);
+    willReturn(generatedBlueprint).given(spaceshipBlueprintFactory).generate();
+
     SpaceshipBlueprint spaceshipBlueprint = spaceshipService.readBlueprint();
 
-    assertThat(spaceshipBlueprint).isEqualTo(theSpaceshipBlueprint);
+    assertThat(spaceshipBlueprint).isEqualTo(generatedBlueprint);
   }
 
   private void verifyEventRecorded(EventType eventType, String theTarget, String payload) {
