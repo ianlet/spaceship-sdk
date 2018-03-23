@@ -20,6 +20,7 @@ import java.util.Objects;
 
 import static java.nio.file.Files.isRegularFile;
 import static java.util.Collections.emptyList;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
 public class UserStoryRepositoryJsonFile implements UserStoryRepository {
@@ -43,6 +44,7 @@ public class UserStoryRepositoryJsonFile implements UserStoryRepository {
         .filter(Objects::nonNull)
         .map(this::toReader)
         .map(this::toUserStory)
+        .sorted(comparing((userStory) -> userStory.name))
         .collect(toList());
     } catch (IOException | URISyntaxException e) {
       return emptyList();
