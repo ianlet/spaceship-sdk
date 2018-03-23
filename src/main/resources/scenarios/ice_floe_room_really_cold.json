@@ -1,5 +1,0 @@
-{
-  "name": "Ice floe room really cold",
-  "events": ["room_03_at_minus_100_celsius", "check_ship_temperature"],
-  "results": ["nothing_happened"]
-}

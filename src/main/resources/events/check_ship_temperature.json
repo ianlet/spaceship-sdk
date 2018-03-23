@@ -1,6 +1,0 @@
-{
-  "name": "Check the ship's temperature",
-  "type": "CHECK_SHIP_TEMPERATURE",
-  "source": "",
-  "payload": ""
-}

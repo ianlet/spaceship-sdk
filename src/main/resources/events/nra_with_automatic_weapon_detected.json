@@ -1,6 +1,0 @@
-{
-  "name": "NRA with automatic weapon detected",
-  "type": "PREDATORS_DETECTED",
-  "source": "NRA member with automatic weapon looking to kill some free time",
-  "payload": "10.009944,50.255570"
-}

@@ -1,8 +1,0 @@
-{
-  "name": "Room 01 door is open",
-  "event": {
-    "type": "DOOR_OPEN",
-    "target": "1",
-    "payload": ""
-  }
-}

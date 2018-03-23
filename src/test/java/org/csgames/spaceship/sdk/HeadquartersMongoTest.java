@@ -19,9 +19,9 @@ public class HeadquartersMongoTest {
 
   private static final String RECORDED_EVENT_TARGET = "team-01";
   private static final String RECORDED_EVENT_PAYLOAD = "34.654334,27.384293";
-  private static final EventType RECORDED_EVENT_TYPE = EventType.MOVED_TO;
+  private static final EventType RECORDED_EVENT_TYPE = EventType.RESOURCE_REGISTERED;
 
-  private static final EventType UNRECORDED_EVENT_TYPE = EventType.FISH_CAUGHT;
+  private static final EventType UNRECORDED_EVENT_TYPE = EventType.TEAM_STATUS_REPORTED;
   private static final String UNRECORDED_EVENT_TARGET = "no-target";
   private static final String UNRECORDED_EVENT_PAYLOAD = "no-payload";
 
