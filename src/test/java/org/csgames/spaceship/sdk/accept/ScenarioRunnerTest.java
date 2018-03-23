@@ -31,7 +31,7 @@ public class ScenarioRunnerTest {
   private final InputEvent firstInputEvent = new InputEvent("first event", "event type", "source", "payload");
   private final InputEvent secondInputEvent = new InputEvent("second event", "event type", "source", "payload");
 
-  private final Result aResult = new Result("result", null);
+  private final Result aResult = new Result("result", false, null);
 
   private SpaceshipApi spaceshipApi;
   private EventFactory eventFactory;
@@ -102,7 +102,7 @@ public class ScenarioRunnerTest {
   private Result givenResultExpectingAnEventNotRecorded() {
     Event unexpectedEvent = eventFactory.create(AN_EVENT_TYPE, A_TEAM, A_PAYLOAD);
     willReturn(false).given(headquarters).wasEventRecorded(unexpectedEvent);
-    return new Result(A_RESULT, unexpectedEvent);
+    return new Result(A_RESULT, false, unexpectedEvent);
   }
 
   private void givenAnEventWasRecorded() {
@@ -110,7 +110,7 @@ public class ScenarioRunnerTest {
   }
 
   private Result givenResultExpectingNoEvent() {
-    return new Result(A_RESULT, NO_EVENT);
+    return new Result(A_RESULT, false, NO_EVENT);
   }
 
   private void givenNoEventRecorded() {

@@ -6,9 +6,11 @@ public class Result {
 
   public String name;
   public Event event;
+  public boolean never;
 
-  public Result(String name, Event event) {
+  public Result(String name, boolean never, Event event) {
     this.name = name;
+    this.never = never;
     this.event = event;
   }
 

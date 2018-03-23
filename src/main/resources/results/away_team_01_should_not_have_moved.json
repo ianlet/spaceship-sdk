@@ -1,0 +1,9 @@
+{
+  "name": "Away Team 01 should not have moved",
+  "never": "true",
+  "event": {
+    "type": "MOVED_TO",
+    "target": "away-team-01",
+    "payload": "EAST,1000"
+  }
+}

@@ -1,6 +1,10 @@
 {
   "name": "Away Team must run",
-  "events": ["away_team_01_moved", "polar_bear_detected"],
+  "events": [
+    "away_team_02_at_ship",
+    "away_team_01_moved",
+    "polar_bear_detected"
+  ],
   "results": [
     "away_team_01_moved_east_1_km"
   ]

@@ -51,7 +51,12 @@ public class ScenarioRunner {
       throw new ScenarioFailedException();
     }
 
-    if (expectedEventWasNotRecorded(result.event)) {
+    if (theEventShouldNotHaveBeenRecorded(result)) {
+      reporter.reportResultUnsatisfied(result);
+      throw new ScenarioFailedException();
+    }
+
+    if (expectedEventWasNotRecorded(result)) {
       reporter.reportResultUnsatisfied(result);
       throw new ScenarioFailedException();
     }
@@ -59,11 +64,15 @@ public class ScenarioRunner {
     reporter.reportResultSatisfied(result);
   }
 
+  private boolean theEventShouldNotHaveBeenRecorded(Result result) {
+    return result.never && headquarters.wasEventRecorded(result.event);
+  }
+
   private boolean anUnexpectedEventWasRecorded(Event event) {
     return event == null && headquarters.hasRecordedAnyEvent();
   }
 
-  private boolean expectedEventWasNotRecorded(Event event) {
-    return event != null && !headquarters.wasEventRecorded(event);
+  private boolean expectedEventWasNotRecorded(Result result) {
+    return result.event != null && !result.never && !headquarters.wasEventRecorded(result.event);
   }
 }
