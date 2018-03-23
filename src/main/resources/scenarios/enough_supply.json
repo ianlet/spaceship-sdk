@@ -1,7 +1,0 @@
-{
-  "name": "Enough supply",
-  "events": [
-    "away_team_01_normally_consumed_supplies"
-  ],
-  "results": ["nothing_happened"]
-}

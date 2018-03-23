@@ -1,8 +1,0 @@
-{
-  "name": "Rock resource added to the Class M Planet Registry",
-  "event": {
-    "type": "RESOURCE_REGISTERED",
-    "target": "CLASS_M",
-    "payload": "rock"
-  }
-}

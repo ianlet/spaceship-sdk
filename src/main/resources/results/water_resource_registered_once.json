@@ -1,8 +1,0 @@
-{
-  "name": "Water resource added to the Class M Planet Registry only once",
-  "event": {
-    "type": "RESOURCE_REGISTERED",
-    "target": "CLASS_M",
-    "payload": "water"
-  }
-}

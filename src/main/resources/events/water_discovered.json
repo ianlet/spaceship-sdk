@@ -1,6 +1,0 @@
-{
-  "name": "Water discovered",
-  "type": "RESOURCE_DISCOVERED",
-  "source": "water",
-  "payload": "10.014423,51.672300"
-}

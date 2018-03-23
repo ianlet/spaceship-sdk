@@ -11,11 +11,8 @@ import org.csgames.spaceship.sdk.accept.result.UserStoryResultStore;
 import org.csgames.spaceship.sdk.accept.userstory.UserStoryRepository;
 import org.csgames.spaceship.sdk.context.Context;
 import org.csgames.spaceship.sdk.context.ContextFactory;
-import org.csgames.spaceship.sdk.service.AwayTeamLogService;
-import org.csgames.spaceship.sdk.service.PlanetResourceService;
 
 import static org.csgames.spaceship.sdk.context.ServiceLocator.locate;
-
 
 public class SpaceshipSdk {
 
@@ -26,32 +23,14 @@ public class SpaceshipSdk {
   }
 
   public static SpaceshipSdk register(String token) {
-    if (token == null || token.isEmpty()) throw new RuntimeException("Cannot register team without a token. Please, provide a token with -DteamToken=TOKEN");
+    if (token == null || token.isEmpty()) {
+      throw new RuntimeException("Cannot register team without a token. Please, provide a token with -DteamToken=TOKEN");
+    }
 
     Context context = new ContextFactory().create(token);
     context.apply();
 
     return new SpaceshipSdk(token);
-  }
-
-  public SpaceshipService getSpaceshipService() {
-    return locate(SpaceshipService.class);
-  }
-
-  public LocationService getLocationService() {
-    return locate(LocationService.class);
-  }
-
-  public CommunicationService getCommunicationService() {
-    return locate(CommunicationService.class);
-  }
-
-  public AwayTeamLogService getAwayTeamLogService() {
-    return locate(AwayTeamLogService.class);
-  }
-
-  public PlanetResourceService getPlanetResourceService() {
-    return locate(PlanetResourceService.class);
   }
 
   public AcceptanceService createAcceptanceService(int port) {

@@ -1,9 +1,0 @@
-{
-  "name": "Water supply too low",
-  "events": [
-    "away_team_01_consumed_too_much_water"
-  ],
-  "results": [
-    "10_liters_of_water_sent_to_away_team_01"
-  ]
-}
