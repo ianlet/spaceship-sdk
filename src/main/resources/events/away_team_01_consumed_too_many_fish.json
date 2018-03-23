@@ -1,6 +1,0 @@
-{
-  "name": "Consumed too many fish",
-  "type": "SUPPLY_CONSUMED",
-  "source": "away-team-01",
-  "payload": "4,55"
-}

@@ -24,7 +24,7 @@ public class ScenarioRunnerTest {
   private static final String A_RESULT = "result";
   private static final String A_TEAM = "team-01";
   private static final String A_PAYLOAD = "23";
-  private static final EventType AN_EVENT_TYPE = EventType.FISH_CAUGHT;
+  private static final EventType AN_EVENT_TYPE = EventType.TEAM_STATUS_REPORTED;
   private static final Event NO_EVENT = null;
 
   private final InputEvent anInputEvent = new InputEvent("an event", "event type", "source", "payload");
