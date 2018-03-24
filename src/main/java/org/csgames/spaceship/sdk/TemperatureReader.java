@@ -8,7 +8,7 @@ public class TemperatureReader {
     int count;
     switch (roomNumber) {
       case 0:
-        return toP(0d);
+        return toP(15d);
       case 1:
         count = temperatureReadCount[roomNumber];
         temperatureReadCount[roomNumber]++;
@@ -20,18 +20,18 @@ public class TemperatureReader {
       case 2:
         return toP(-15d);
       case 3:
-        return toP(-5d);
+        return toP(10d);
       case 4:
         throw new TemperatureSensorNotWorkingException(roomNumber);
       case 5:
         return 5d;
       case 6:
-        return toP(-14d);
+        return toP(-5d);
       case 7:
         count = temperatureReadCount[roomNumber];
         temperatureReadCount[roomNumber]++;
         if (count % 2 == 0) {
-          return toP(1d);
+          return toP(10d);
         } else {
           return toP(-50d);
         }

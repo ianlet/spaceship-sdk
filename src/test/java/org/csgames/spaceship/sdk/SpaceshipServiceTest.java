@@ -33,14 +33,14 @@ public class SpaceshipServiceTest {
   }
 
   @Test
-  public void itShouldRecordThatFishWereSentToTarget() {
+  public void itShouldRecordThatFishWereSentToTarget() throws Exception {
     spaceshipService.sendFishTo(THE_TARGET, SOME_FISH);
 
     verifyEventRecorded(EventType.FISH_SENT, THE_TARGET, String.valueOf(SOME_FISH));
   }
 
   @Test
-  public void itShouldRecordThatWaterWasSentToTarget() {
+  public void itShouldRecordThatWaterWasSentToTarget() throws Exception {
     spaceshipService.sendWaterTo(THE_TARGET, SOME_WATER_IN_LITER);
 
     verifyEventRecorded(EventType.WATER_SENT, THE_TARGET, String.valueOf(SOME_WATER_IN_LITER));

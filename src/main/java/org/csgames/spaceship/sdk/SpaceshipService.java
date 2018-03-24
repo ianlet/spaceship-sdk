@@ -9,6 +9,8 @@ import static org.csgames.spaceship.sdk.EventType.VENT_CLOSED;
 import static org.csgames.spaceship.sdk.EventType.VENT_OPEN;
 import static org.csgames.spaceship.sdk.EventType.WATER_SENT;
 
+import java.util.Random;
+
 public class SpaceshipService {
 
   private final Headquarters headquarters;
@@ -24,14 +26,14 @@ public class SpaceshipService {
   }
 
   public void sendFishTo(String target, int fishCount) throws SpaceshipOutOfSuppliesException {
-    if (target.equals("away-team-09")) {
+    if (new Random().nextInt(10) == 3) {
       throw new SpaceshipOutOfSuppliesException();
     }
     recordEvent(FISH_SENT, target, fishCount);
   }
 
   public void sendWaterTo(String target, int waterInLiter) throws SpaceshipOutOfSuppliesException {
-    if (target.equals("away-team-09")) {
+    if (new Random().nextInt(10) == 3) {
       throw new SpaceshipOutOfSuppliesException();
     }
     recordEvent(WATER_SENT, target, waterInLiter);
