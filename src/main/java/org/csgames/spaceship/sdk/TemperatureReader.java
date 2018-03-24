@@ -8,7 +8,7 @@ public class TemperatureReader {
     int count;
     switch (roomNumber) {
       case 0:
-        return 0d;
+        return toF(0d);
       case 1:
         count = temperatureReadCount[roomNumber];
         temperatureReadCount[roomNumber]++;
@@ -18,7 +18,7 @@ public class TemperatureReader {
           return -50d;
         }
       case 2:
-        return -15;
+        return toF(-15d);
       case 3:
         return -5d;
       case 4:
@@ -31,9 +31,9 @@ public class TemperatureReader {
         count = temperatureReadCount[roomNumber];
         temperatureReadCount[roomNumber]++;
         if (count % 2 == 0) {
-          return 1d;
+          return toF(1d);
         } else {
-          return -50d;
+          return toF(-50d);
         }
       case 8:
         return -23d;
@@ -42,6 +42,10 @@ public class TemperatureReader {
       default:
         throw new UnknownRoomException(roomNumber);
     }
+  }
+
+  private double toF(double celsius) {
+    return celsius * 9 / 5 + 32;
   }
 
   public double readMeanHabitableTemperature() {
