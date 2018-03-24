@@ -3,8 +3,8 @@
   "scenarios": [
     "habitable_room_too_warm",
     "habitable_room_too_cold_with_open_door",
-    "ice_floe_room_really_cold",
-    "temperature_sensor_not_working"
+    "never_open_ice_floe_doors",
+    "temperature_sensor_not_working_mean_habitable_too_warm"
   ],
   "points": 3,
   "penalties": 3,

@@ -1,0 +1,8 @@
+{
+  "name": "Room 08 air conditioning is closed",
+  "event": {
+    "type": "AIR_CONDITIONING_CLOSED",
+    "target": "8",
+    "payload": ""
+  }
+}

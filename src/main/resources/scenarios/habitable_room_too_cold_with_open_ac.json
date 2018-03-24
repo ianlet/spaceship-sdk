@@ -1,0 +1,13 @@
+{
+  "name": "Habitable room too cold with its ac open",
+  "events": [
+    "room_07_at_1_celsius",
+    "check_ship_temperature",
+    "room_07_at_minus_50_celsius",
+    "check_ship_temperature"
+  ],
+  "results": [
+    "room_07_ac_is_open",
+    "room_07_ac_is_closed"
+  ]
+}

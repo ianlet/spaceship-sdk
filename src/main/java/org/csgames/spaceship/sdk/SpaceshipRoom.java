@@ -7,10 +7,10 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class SpaceshipRoom {
 
-  public final String roomNumber;
+  public final int roomNumber;
   public final String type;
 
-  public SpaceshipRoom(String roomNumber, String type) {
+  public SpaceshipRoom(int roomNumber, String type) {
     this.roomNumber = roomNumber;
     this.type = type;
   }

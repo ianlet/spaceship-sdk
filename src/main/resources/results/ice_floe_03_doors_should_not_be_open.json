@@ -1,0 +1,9 @@
+{
+  "name": "Ice floe 03 doors should not have been open",
+  "never": "true",
+  "event": {
+    "type": "DOOR_OPEN",
+    "target": "3",
+    "payload": ""
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Ice floe too warm",
+  "events": [
+    "ice_floe_06_at_minus_14_celsius",
+    "check_ship_temperature"
+  ],
+  "results": [
+    "ice_floe_06_ac_is_open"
+  ]
+}

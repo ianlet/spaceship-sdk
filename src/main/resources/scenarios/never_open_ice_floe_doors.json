@@ -1,0 +1,10 @@
+{
+  "name": "Never open ice floe doors",
+  "events": [
+    "ice_floe_03_too_warm",
+    "check_ship_temperature"
+  ],
+  "results": [
+    "ice_floe_03_doors_should_not_be_open"
+  ]
+}
