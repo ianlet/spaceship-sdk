@@ -1,7 +1,5 @@
 package org.csgames.spaceship.sdk;
 
-import java.util.Random;
-
 import static org.csgames.spaceship.sdk.EventType.AIR_CONDITIONING_CLOSED;
 import static org.csgames.spaceship.sdk.EventType.AIR_CONDITIONING_OPEN;
 import static org.csgames.spaceship.sdk.EventType.DOOR_CLOSED;
@@ -65,9 +63,21 @@ public class SpaceshipService {
     return temperatureReader.readMeanHabitableTemperature();
   }
 
-  public SensorUnit roomTemperatureSensorUnit(int roomNumber) {
-    int i = new Random().nextInt(2);
-    return SensorUnit.values()[i]; // FIXME: Return the actual room temperature sensor unit
+  public String roomTemperatureSensorUnit(int roomNumber) {
+    switch (roomNumber) {
+      case 0:
+        return "P";
+      case 2:
+        return "P";
+      case 3:
+        return "P";
+      case 6:
+        return "P";
+      case 7:
+        return "P";
+      default:
+        return "C";
+    }
   }
 
   public SpaceshipBlueprint readBlueprint() {

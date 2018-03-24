@@ -40,20 +40,6 @@ public class TemperatureReaderTest {
     assertThat(roomTemperature).isWithin(0).of(MINUS_FIFTY_CELSIUS_DEGREES);
   }
 
-  @Test
-  public void itShouldReadTemperatureOfMinusFifteenCelsiusDegrees_givenRoom02TemperatureRead() throws Throwable {
-    double roomTemperature = temperatureReader.readRoomTemperature(ROOM_02);
-
-    assertThat(roomTemperature).isWithin(0).of(MINUS_FIFTEEN_CELSIUS_DEGREES);
-  }
-
-  @Test
-  public void itShouldReadTemperatureOfMinusOneHundredCelsiusDegrees_givenRoom03TemperatureRead() throws Throwable {
-    double roomTemperature = temperatureReader.readRoomTemperature(ROOM_03);
-
-    assertThat(roomTemperature).isWithin(0).of(MINUS_FIVE_CELSIUS_DEGREES);
-  }
-
   @Test(expected = TemperatureSensorNotWorkingException.class)
   public void itShouldThrowTemperatureSensorNotWorking_givenRoom04TemperatureRead() throws Throwable {
     temperatureReader.readRoomTemperature(ROOM_04);
