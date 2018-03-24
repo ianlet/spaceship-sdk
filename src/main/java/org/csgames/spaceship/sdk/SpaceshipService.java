@@ -23,11 +23,17 @@ public class SpaceshipService {
     this.temperatureReader = temperatureReader;
   }
 
-  public void sendFishTo(String target, int fishCount) {
+  public void sendFishTo(String target, int fishCount) throws SpaceshipOutOfSuppliesException {
+    if (target.equals("away-team-09")) {
+      throw new SpaceshipOutOfSuppliesException();
+    }
     recordEvent(FISH_SENT, target, fishCount);
   }
 
-  public void sendWaterTo(String target, int waterInLiter) {
+  public void sendWaterTo(String target, int waterInLiter) throws SpaceshipOutOfSuppliesException {
+    if (target.equals("away-team-09")) {
+      throw new SpaceshipOutOfSuppliesException();
+    }
     recordEvent(WATER_SENT, target, waterInLiter);
   }
 

@@ -1,0 +1,11 @@
+{
+  "name": "Spaceship out of water",
+  "events": [
+    "away_team_01_moved",
+    "water_discovered_near_away_team_01",
+    "away_team_09_consumed_more_water_than_spaceship_supplies"
+  ],
+  "results": [
+    "should_have_communicated_with_away_team_01_to_catch_fish_to_discovered_water_source"
+  ]
+}

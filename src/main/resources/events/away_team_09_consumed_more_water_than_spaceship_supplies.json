@@ -1,0 +1,6 @@
+{
+  "name": "Away Team 09 consumed more water than spaceship supplies",
+  "type": "SUPPLY_CONSUMED",
+  "source": "away-team-09",
+  "payload": "1,1"
+}

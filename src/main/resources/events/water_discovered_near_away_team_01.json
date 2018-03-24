@@ -1,0 +1,6 @@
+{
+  "name": "Water discovered near away team 01",
+  "type": "RESOURCE_DISCOVERED",
+  "source": "water",
+  "payload": "10.009944,50.264578"
+}
