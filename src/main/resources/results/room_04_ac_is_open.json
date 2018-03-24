@@ -1,0 +1,8 @@
+{
+  "name": "Room 04 air conditioning is open",
+  "event": {
+    "type": "AIR_CONDITIONING_OPEN",
+    "target": "4",
+    "payload": ""
+  }
+}

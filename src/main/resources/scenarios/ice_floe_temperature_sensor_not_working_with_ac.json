@@ -1,0 +1,10 @@
+{
+  "name": "Temperature sensor of ice floe 09 is not working",
+  "events": [
+    "ice_floe_09_temperature_sensor_not_working",
+    "check_ship_temperature"
+  ],
+  "results": [
+    "ice_floe_09_ac_is_open"
+  ]
+}

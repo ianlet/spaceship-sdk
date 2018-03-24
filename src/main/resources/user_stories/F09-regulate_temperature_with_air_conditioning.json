@@ -1,0 +1,14 @@
+{
+  "name": "F09 - Regulate temperature with the air conditioning system",
+  "scenarios": [
+    "habitable_room_too_warm_with_ac",
+    "habitable_room_too_cold_with_open_ac",
+    "ice_floe_too_warm",
+    "ice_floe_too_cold",
+    "temperature_sensor_not_working_with_ac_mean_habitable_too_warm",
+    "ice_floe_temperature_sensor_not_working_with_ac"
+  ],
+  "points": 3,
+  "penalties": 3,
+  "deaths": 0
+}

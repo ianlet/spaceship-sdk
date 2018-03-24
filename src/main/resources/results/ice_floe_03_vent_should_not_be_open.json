@@ -1,0 +1,9 @@
+{
+  "name": "Ice floe 03 vent should not have been open",
+  "never": "true",
+  "event": {
+    "type": "VENT_OPEN",
+    "target": "3",
+    "payload": ""
+  }
+}
